@@ -332,10 +332,11 @@
     /* ── SCHEDULE ── */
     .schedule-days {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
     }
-    @media (max-width: 640px) { .schedule-days { grid-template-columns: 1fr; gap: 48px; } }
+    @media (max-width: 860px) { .schedule-days { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    @media (max-width: 560px) { .schedule-days { grid-template-columns: 1fr; gap: 40px; } }
     .schedule-day h3 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.5rem;
@@ -939,6 +940,17 @@
             <p class="timeline-time">11:00 PM</p>
             <p class="timeline-event">The Final Toast</p>
             <p class="timeline-desc">Speakeasy After Party &nbsp;·&nbsp; Same venue</p>
+          </div>
+        </div>
+      </div>
+      <div class="schedule-day">
+        <h3>Morning After</h3>
+        <p class="day-sub">Sunday &nbsp;·&nbsp; October 4, 2026</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-time">Morning</p>
+            <p class="timeline-event">Farewell Breakfast</p>
+            <p class="timeline-desc">Chantilly, Virginia<br/>Details to come</p>
           </div>
         </div>
       </div>
