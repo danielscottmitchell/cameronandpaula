@@ -970,46 +970,10 @@
       <span class="rsvp-deadline">Kindly respond by September 1, 2026</span>
       <p>We'd love to celebrate with you. Please fill out the form below to let us know if you'll be joining us. Invitations are extended to named guests only — we are unable to accommodate plus ones or children unless specifically noted on your invitation.</p>
     </div>
-    <!-- Shown when no valid invite link is used -->
-    <div id="rsvp-locked" class="rsvp-locked">
-      <p>Please use the personalized link from your invitation to RSVP.</p>
-      <p class="rsvp-locked-sub">Need help? Reach out to <a href="mailto:cameron.n.brennan@gmail.com">Cameron</a> or Paula at <a href="tel:5712683859">(571) 268-3859</a>.</p>
+    <div class="rsvp-locked">
+      <p>RSVP coming soon.</p>
+      <p class="rsvp-locked-sub">Check back here — invitations will include a personalized link when RSVPs open.</p>
     </div>
-
-    <!--
-      SETUP: Sign up at formspree.io, create a form, and replace FORM_ID below.
-      Then add guests to the guestList object in the <script> at the bottom.
-      Each guest gets a link like: https://yoursite.com/?code=ABC123
-    -->
-    <form class="rsvp-form" id="rsvp-form" style="display:none" action="https://formspree.io/f/FORM_ID" method="POST">
-      <input type="hidden" name="_subject" value="RSVP — Cameron &amp; Paula Wedding" />
-      <input type="hidden" name="invite_code" id="invite-code-field" />
-      <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your full name" />
-      </div>
-      <div class="form-group">
-        <label>Will you attend?</label>
-        <div class="radio-group">
-          <label class="radio-label">
-            <input type="radio" name="attendance" value="Joyfully accepts" required /> Joyfully accepts
-          </label>
-          <label class="radio-label">
-            <input type="radio" name="attendance" value="Regretfully declines" /> Regretfully declines
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="dietary">Dietary Restrictions or Allergies</label>
-        <input type="text" id="dietary" name="dietary" placeholder="None, or please describe" />
-      </div>
-      <div class="form-group">
-        <label for="song">Song Request</label>
-        <input type="text" id="song" name="song" placeholder="What song will get you on the dance floor?" />
-      </div>
-      <button type="submit" class="btn-submit">Send RSVP</button>
-    </form>
-    <p class="rsvp-note" id="rsvp-note" style="display:none">Invitations are for named guests only. No plus ones or children unless specified on your invitation.</p>
   </div>
 </section>
 
