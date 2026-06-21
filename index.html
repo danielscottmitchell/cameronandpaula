@@ -859,6 +859,66 @@
     .section-illustration-xl {
       width: clamp(180px, 24vw, 280px);
     }
+
+    /* ════════════════════════════════════════
+       MOBILE POLISH
+    ════════════════════════════════════════ */
+    @media (max-width: 640px) {
+
+      /* Sections */
+      .section { padding: 60px 20px; }
+      .section-header { margin-bottom: 36px; }
+
+      /* Hero */
+      .section-hero { padding: 80px 20px 56px; }
+      .hero-swans { width: clamp(80px, 22vw, 120px); }
+      .countdown { gap: 10px; margin: 20px 0 16px; }
+      .unit-num { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+      .dot { font-size: 1.8rem; }
+      .unit-label { font-size: .52rem; letter-spacing: .16em; }
+      .hero-venue { font-size: .62rem; letter-spacing: .13em; }
+      .divider-sprig { margin: 12px auto; }
+
+      /* Schedule */
+      .schedule-days { gap: 36px; }
+      .day-illustration { height: 90px; }
+      .timeline-item { margin-bottom: 20px; }
+
+      /* Travel */
+      .venue-card { margin-bottom: 36px; }
+      .travel-grid { gap: 16px; }
+      .travel-card { padding: 28px 20px; }
+      .hotel-table-wrap { margin: 0 -20px; padding: 0 20px 4px; }
+
+      /* RSVP */
+      .rsvp-locked { padding: 36px 20px; }
+      .rsvp-intro { margin-bottom: 32px; }
+
+      /* Registry */
+      .registry-card { padding: 36px 20px; }
+
+      /* Wedding Party */
+      .party-grid { gap: 36px; }
+      .party-names li { padding: 10px 0; }
+
+      /* Section illustrations */
+      .section-illustration { width: clamp(100px, 28vw, 150px); margin-bottom: 24px; }
+      .section-illustration-xl { width: clamp(130px, 40vw, 190px); }
+
+      /* Contact */
+      .contact-card { padding: 32px 16px; }
+      .contact-grid { gap: 16px; }
+
+      /* Footer */
+      footer { padding: 44px 20px; }
+    }
+
+    @media (max-width: 420px) {
+      h1.hero-names { font-size: clamp(2rem, 10vw, 2.8rem); }
+      .hero-date { letter-spacing: .16em; font-size: .95rem; }
+      .hero-venue { letter-spacing: .1em; font-size: .6rem; }
+      .corner { width: clamp(140px, 48vw, 200px); }
+    }
   </style>
 </head>
 <body>
