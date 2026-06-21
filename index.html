@@ -532,6 +532,30 @@
     .rsvp-locked a:hover { text-decoration: underline; }
 
     /* ── TRAVEL ── */
+    .venue-card {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .venue-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+    .venue-address {
+      font-size: .8rem;
+      color: var(--warm);
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+    .venue-directions {
+      font-size: .72rem;
+      color: var(--rose);
+      text-decoration: none;
+      letter-spacing: .07em;
+    }
+    .venue-directions:hover { text-decoration: underline; }
     .travel-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -827,10 +851,13 @@
     }
     .section-illustration {
       display: block;
-      width: clamp(80px, 14vw, 120px);
+      width: clamp(130px, 18vw, 200px);
       height: auto;
-      margin: 0 auto 32px;
+      margin: 0 auto 36px;
       opacity: .8;
+    }
+    .section-illustration-xl {
+      width: clamp(180px, 24vw, 280px);
     }
   </style>
 </head>
@@ -920,13 +947,6 @@
       <span class="section-label">The Weekend</span>
       <h2>Details &amp; Schedule</h2>
       <div class="section-rule"></div>
-    </div>
-    <div class="weekend-info">
-      <div>
-        <span class="info-label">Venue</span>
-        <p>Heigh Torr Estate<br/>13656 Harpers Ferry Rd &nbsp;·&nbsp; Purcellville, VA 20132</p>
-        <a href="https://maps.google.com/?q=13656+Harpers+Ferry+Rd+Purcellville+VA+20132" target="_blank" rel="noopener noreferrer">Get directions &rarr;</a>
-      </div>
     </div>
     <div class="schedule-days">
       <div class="schedule-day">
@@ -1030,7 +1050,15 @@
       <h2>Travel &amp; Accommodations</h2>
       <div class="section-rule"></div>
     </div>
-    <img src="car.svg" class="section-illustration" alt="" aria-hidden="true" />
+    <img src="car.svg" class="section-illustration section-illustration-xl" alt="" aria-hidden="true" />
+
+    <div class="venue-card">
+      <span class="info-label">Venue</span>
+      <p class="venue-name">Heigh Torr Estate</p>
+      <p class="venue-address">13656 Harpers Ferry Rd &nbsp;·&nbsp; Purcellville, VA 20132</p>
+      <a href="https://maps.google.com/?q=13656+Harpers+Ferry+Rd+Purcellville+VA+20132" target="_blank" rel="noopener noreferrer" class="venue-directions">Get directions &rarr;</a>
+    </div>
+
     <div class="travel-grid">
       <div class="travel-card">
         <h3>Closest Airport</h3>
@@ -1039,6 +1067,10 @@
       <div class="travel-card">
         <h3>Parking</h3>
         <p>Complimentary parking is available at Heigh Torr Estate for all guests. Please plan ahead for a designated driver or rideshare if you intend to enjoy the open bar.</p>
+      </div>
+      <div class="travel-card">
+        <h3>The Final Toast &mdash; Afterparty</h3>
+        <p>The night continues at The Derry Club Speakeasy, located on the Heigh Torr Estate grounds. No travel needed — the party doesn't stop.</p>
       </div>
     </div>
 
