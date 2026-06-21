@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Cameron Brennan & Paula Reyes are getting married October 3, 2026 at Heigh Torr Estate, Purcellville, Virginia." />
   <title>Cameron & Paula · October 2-4, 2026</title>
+  <link rel="icon" href="cp.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
@@ -533,15 +534,51 @@
     }
     .travel-card p { font-size: .82rem; line-height: 1.75; color: var(--warm); }
     .coming-soon { font-style: italic; color: var(--sage) !important; }
-    .hotel-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    .hotel-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .hotel-table { width: 100%; border-collapse: collapse; min-width: 580px; }
+    .hotel-table th {
+      font-size: .58rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      text-align: left;
+      padding: 0 28px 14px 0;
+      border-bottom: 1px solid rgba(201,135,122,.22);
     }
+    .hotel-table td {
+      vertical-align: top;
+      padding: 22px 28px 22px 0;
+      border-bottom: 1px solid rgba(201,135,122,.09);
+      color: var(--warm);
+      font-size: .8rem;
+      line-height: 1.65;
+    }
+    .hotel-table tr:last-child td { border-bottom: none; }
+    .ht-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .ht-city { display: block; font-size: .72rem; color: var(--rose); }
+    .ht-phone { color: var(--rose); text-decoration: none; font-size: .72rem; }
+    .ht-phone:hover { text-decoration: underline; }
+    .ht-rate {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      white-space: nowrap;
+    }
+    .ht-link { color: var(--rose); text-decoration: none; font-size: .75rem; letter-spacing: .05em; white-space: nowrap; }
+    .ht-link:hover { text-decoration: underline; }
+    .ht-soon { color: var(--sage); font-style: italic; font-size: .75rem; }
+    /* OLD hotel card rules kept for reference — replaced by table */
     .hotel-card {
-      padding: 28px 24px;
-      border: 1px solid rgba(201,135,122,.18);
-      border-top: 2px solid rgba(201,135,122,.35);
+      display: none;      border-top: 2px solid rgba(201,135,122,.35);
       background: var(--cream);
     }
     .hotel-card h3 {
@@ -984,39 +1021,64 @@
       <h2 style="font-size:clamp(1.4rem,3vw,2rem);">Hotel Accommodations</h2>
       <p style="font-size:.8rem;color:var(--rose);margin-top:12px;font-style:italic;">Book by September 3, 2026 to guarantee your rate &nbsp;·&nbsp; Arrival Oct 2, Depart Oct 4 recommended</p>
     </div>
-    <div class="hotel-grid">
-      <div class="hotel-card">
-        <h3>Hampton Inn &amp; Suites</h3>
-        <p class="hotel-location">Charles Town, WV &nbsp;·&nbsp; <a href="tel:3047252200">(304) 725-2200</a></p>
-        <p class="hotel-address">157 Pimlico Drive, Charles Town, WV 25414</p>
-        <p class="hotel-rate">$179 / night</p>
-        <p class="hotel-note">Book by phone and ask for the <strong>Brennan-Reyes Wedding</strong> room block</p>
-        <p class="hotel-cutoff">Cut-off: September 3, 2026</p>
-      </div>
-      <div class="hotel-card">
-        <h3>Best Western Leesburg</h3>
-        <p class="hotel-location">Leesburg, VA &nbsp;·&nbsp; <a href="tel:9177045979">(917) 704-5979</a></p>
-        <p class="hotel-address">726 E Market Street, Leesburg, VA 20176</p>
-        <p class="hotel-rate">$149 / night</p>
-        <p class="hotel-note">Group name: <strong>Reyes/Brennan Wedding</strong><br/>Free cancellation before 4:00 PM on Oct 2, 2026</p>
-        <a href="https://www.bestwestern.com/en_US/book/hotel-rooms.47076.html?groupId=4H8YK2Z7" target="_blank" rel="noopener noreferrer" class="hotel-link">Book Online &rarr;</a>
-      </div>
-      <div class="hotel-card">
-        <h3>Holiday Inn Express</h3>
-        <p class="hotel-location">Charles Town, WV &nbsp;·&nbsp; <a href="tel:3047251330">(304) 725-1330</a></p>
-        <p class="hotel-address">681 Flowing Springs Rd, Ransom, WV 25438</p>
-        <p class="hotel-rate">$169 / night</p>
-        <p class="hotel-note">Group name: <strong>Brennan/Reyes Wedding</strong></p>
-        <p class="coming-soon">Direct booking link coming soon</p>
-      </div>
-      <div class="hotel-card">
-        <h3>Hyatt Place Dulles North</h3>
-        <p class="hotel-location">Dulles, VA &nbsp;·&nbsp; <a href="tel:8778037534">(877) 803-7534</a></p>
-        <p class="hotel-address">21481 Ridgetop Circle, Dulles, VA 20166</p>
-        <p class="hotel-rate">$139 / night</p>
-        <p class="hotel-note">Group Code: <strong>G-BRWO</strong></p>
-        <a href="https://www.hyatt.com/events/en-US/group-booking/IADZN/G-BRWO" target="_blank" rel="noopener noreferrer" class="hotel-link">Book Online &rarr;</a>
-      </div>
+    <div class="hotel-table-wrap">
+      <table class="hotel-table">
+        <thead>
+          <tr>
+            <th>Hotel</th>
+            <th>Address</th>
+            <th>Rate</th>
+            <th>How to Book</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="ht-name">Hampton Inn &amp; Suites</span>
+              <span class="ht-city">Charles Town, WV</span>
+              <a href="tel:3047252200" class="ht-phone">(304) 725-2200</a>
+            </td>
+            <td>157 Pimlico Drive<br/>Charles Town, WV 25414</td>
+            <td><span class="ht-rate">$179 / night</span></td>
+            <td>Call and ask for the <strong>Brennan-Reyes Wedding</strong> block<br/><em style="font-size:.72rem;color:var(--sage)">Cut-off: Sept 3, 2026</em></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <span class="ht-name">Best Western Leesburg</span>
+              <span class="ht-city">Leesburg, VA</span>
+              <a href="tel:9177045979" class="ht-phone">(917) 704-5979</a>
+            </td>
+            <td>726 E Market Street<br/>Leesburg, VA 20176</td>
+            <td><span class="ht-rate">$149 / night</span></td>
+            <td>Group: <strong>Reyes/Brennan Wedding</strong><br/>Free cancellation before 4 PM on Oct 2</td>
+            <td><a href="https://www.bestwestern.com/en_US/book/hotel-rooms.47076.html?groupId=4H8YK2Z7" target="_blank" rel="noopener noreferrer" class="ht-link">Book Online &rarr;</a></td>
+          </tr>
+          <tr>
+            <td>
+              <span class="ht-name">Holiday Inn Express</span>
+              <span class="ht-city">Charles Town, WV</span>
+              <a href="tel:3047251330" class="ht-phone">(304) 725-1330</a>
+            </td>
+            <td>681 Flowing Springs Rd<br/>Ransom, WV 25438</td>
+            <td><span class="ht-rate">$169 / night</span></td>
+            <td>Group: <strong>Brennan/Reyes Wedding</strong></td>
+            <td><span class="ht-soon">Link coming soon</span></td>
+          </tr>
+          <tr>
+            <td>
+              <span class="ht-name">Hyatt Place Dulles North</span>
+              <span class="ht-city">Dulles, VA</span>
+              <a href="tel:8778037534" class="ht-phone">(877) 803-7534</a>
+            </td>
+            <td>21481 Ridgetop Circle<br/>Dulles, VA 20166</td>
+            <td><span class="ht-rate">$139 / night</span></td>
+            <td>Group Code: <strong>G-BRWO</strong></td>
+            <td><a href="https://www.hyatt.com/events/en-US/group-booking/IADZN/G-BRWO" target="_blank" rel="noopener noreferrer" class="ht-link">Book Online &rarr;</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
