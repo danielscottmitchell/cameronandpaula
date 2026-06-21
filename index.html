@@ -307,6 +307,28 @@
     .detail-card a { color: var(--rose); text-decoration: none; font-size: .75rem; letter-spacing: .08em; display: inline-block; margin-top: 12px; }
     .detail-card a:hover { text-decoration: underline; }
 
+    /* ── WEEKEND INFO STRIP ── */
+    .weekend-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(201,135,122,.15);
+    }
+    @media (max-width: 560px) { .weekend-info { grid-template-columns: 1fr; } }
+    .info-label {
+      display: block;
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+    .weekend-info p { font-size: .84rem; line-height: 1.75; color: var(--warm); }
+    .weekend-info a { color: var(--rose); text-decoration: none; font-size: .75rem; letter-spacing: .06em; display: inline-block; margin-top: 10px; }
+    .weekend-info a:hover { text-decoration: underline; }
+
     /* ── SCHEDULE ── */
     .schedule-days {
       display: grid;
@@ -452,6 +474,29 @@
       margin-top: 24px;
       font-style: italic;
     }
+    .rsvp-locked {
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 52px 40px;
+      border: 1px solid rgba(201,135,122,.2);
+    }
+    .rsvp-locked p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--warm);
+    }
+    .rsvp-locked .rsvp-locked-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: .8rem;
+      color: var(--sage);
+      margin-top: 16px;
+      font-style: normal;
+    }
+    .rsvp-locked a { color: var(--rose); text-decoration: none; }
+    .rsvp-locked a:hover { text-decoration: underline; }
 
     /* ── TRAVEL ── */
     .travel-grid {
@@ -474,6 +519,45 @@
     }
     .travel-card p { font-size: .82rem; line-height: 1.75; color: var(--warm); }
     .coming-soon { font-style: italic; color: var(--sage) !important; }
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .hotel-card {
+      padding: 28px 24px;
+      border: 1px solid rgba(201,135,122,.18);
+      border-top: 2px solid rgba(201,135,122,.35);
+      background: var(--cream);
+    }
+    .hotel-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+    .hotel-location { font-size: .78rem; color: var(--rose); margin-bottom: 4px; }
+    .hotel-location a { color: var(--rose); text-decoration: none; }
+    .hotel-address { font-size: .75rem; color: var(--warm); margin-bottom: 10px; line-height: 1.5; }
+    .hotel-rate {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+    .hotel-note { font-size: .76rem; color: var(--warm); line-height: 1.6; margin-bottom: 6px; }
+    .hotel-cutoff { font-size: .72rem; color: var(--sage); font-style: italic; }
+    .hotel-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      color: var(--rose);
+      text-decoration: none;
+    }
+    .hotel-link:hover { text-decoration: underline; }
 
     /* ── REGISTRY ── */
     .registry-grid {
@@ -668,8 +752,7 @@
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">Menu</button>
     <ul class="nav-links" id="nav-links">
       <li><a href="#our-story">Our Story</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#details">Weekend</a></li>
       <li><a href="#rsvp">RSVP</a></li>
       <li><a href="#travel">Travel</a></li>
       <li><a href="#registry">Registry</a></li>
@@ -794,43 +877,24 @@
   </div>
 </section>
 
-<!-- ── WEDDING DETAILS ── -->
+<!-- ── WEEKEND (Details + Schedule merged) ── -->
 <section id="details" class="section section-alt">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-label">All the Details</span>
-      <h2>Wedding Details</h2>
+      <span class="section-label">The Weekend</span>
+      <h2>Details &amp; Schedule</h2>
       <div class="section-rule"></div>
     </div>
-    <div class="details-grid">
-      <div class="detail-card">
-        <h3>Ceremony</h3>
-        <p>October 3, 2026<br/>4:30 PM<br/>Outdoor<br/>Heigh Torr Estate</p>
-      </div>
-      <div class="detail-card">
-        <h3>Reception</h3>
-        <p>Cocktail Hour at 5:00 PM<br/>Dinner &amp; Dancing at 6:20 PM<br/>Outdoor Tent<br/>Same venue</p>
-      </div>
-      <div class="detail-card">
-        <h3>Venue</h3>
-        <p>Heigh Torr Estate<br/>13656 Harpers Ferry Rd<br/>Purcellville, VA 20132</p>
+    <div class="weekend-info">
+      <div>
+        <span class="info-label">Venue</span>
+        <p>Heigh Torr Estate<br/>13656 Harpers Ferry Rd &nbsp;·&nbsp; Purcellville, VA 20132</p>
         <a href="https://maps.google.com/?q=13656+Harpers+Ferry+Rd+Purcellville+VA+20132" target="_blank" rel="noopener noreferrer">Get directions &rarr;</a>
       </div>
-      <div class="detail-card">
-        <h3>Dress Code</h3>
-        <p>Formal<br/><br/>Arrive looking your most elegant. All events are outdoors — please keep this in mind when choosing footwear.</p>
+      <div>
+        <span class="info-label">Dress Code</span>
+        <p>Wedding: Formal<br/>Welcome Party: Western<br/><br/>All events are outdoors — please keep this in mind when choosing footwear.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SCHEDULE ── -->
-<section id="schedule" class="section">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-label">Weekend Events</span>
-      <h2>Schedule</h2>
-      <div class="section-rule"></div>
     </div>
     <div class="schedule-days">
       <div class="schedule-day">
@@ -840,7 +904,7 @@
           <div class="timeline-item">
             <p class="timeline-time">5:00 PM</p>
             <p class="timeline-event">Welcome Party Begins</p>
-            <p class="timeline-desc">Heigh Torr Estate<br/>Dress code: Western</p>
+            <p class="timeline-desc">Heigh Torr Estate &nbsp;·&nbsp; Western dress</p>
           </div>
           <div class="timeline-item">
             <p class="timeline-time">8:00 PM</p>
@@ -860,7 +924,7 @@
           <div class="timeline-item">
             <p class="timeline-time">4:30 PM</p>
             <p class="timeline-event">Ceremony</p>
-            <p class="timeline-desc">Outdoor &nbsp;·&nbsp; Heigh Torr Estate</p>
+            <p class="timeline-desc">Outdoor &nbsp;·&nbsp; Formal</p>
           </div>
           <div class="timeline-item">
             <p class="timeline-time">5:00 PM</p>
@@ -894,12 +958,20 @@
       <span class="rsvp-deadline">Kindly respond by September 1, 2026</span>
       <p>We'd love to celebrate with you. Please fill out the form below to let us know if you'll be joining us. Invitations are extended to named guests only — we are unable to accommodate plus ones or children unless specifically noted on your invitation.</p>
     </div>
+    <!-- Shown when no valid invite link is used -->
+    <div id="rsvp-locked" class="rsvp-locked">
+      <p>Please use the personalized link from your invitation to RSVP.</p>
+      <p class="rsvp-locked-sub">Need help? Reach out to <a href="mailto:cameron.n.brennan@gmail.com">Cameron</a> or Paula at <a href="tel:5712683859">(571) 268-3859</a>.</p>
+    </div>
+
     <!--
-      SETUP: Sign up at formspree.io, create a form, and replace FORM_ID below
-      with your actual form ID (e.g. https://formspree.io/f/abcd1234)
+      SETUP: Sign up at formspree.io, create a form, and replace FORM_ID below.
+      Then add guests to the guestList object in the <script> at the bottom.
+      Each guest gets a link like: https://yoursite.com/?code=ABC123
     -->
-    <form class="rsvp-form" action="https://formspree.io/f/FORM_ID" method="POST">
+    <form class="rsvp-form" id="rsvp-form" style="display:none" action="https://formspree.io/f/FORM_ID" method="POST">
       <input type="hidden" name="_subject" value="RSVP — Cameron &amp; Paula Wedding" />
+      <input type="hidden" name="invite_code" id="invite-code-field" />
       <div class="form-group">
         <label for="name">Full Name</label>
         <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your full name" />
@@ -925,7 +997,7 @@
       </div>
       <button type="submit" class="btn-submit">Send RSVP</button>
     </form>
-    <p class="rsvp-note">Invitations are for named guests only. No plus ones or children unless specified on your invitation.</p>
+    <p class="rsvp-note" id="rsvp-note" style="display:none">Invitations are for named guests only. No plus ones or children unless specified on your invitation.</p>
   </div>
 </section>
 
@@ -946,9 +1018,45 @@
         <h3>Parking</h3>
         <p>Complimentary parking is available at Heigh Torr Estate for all guests. Please plan ahead for a designated driver or rideshare if you intend to enjoy the open bar.</p>
       </div>
-      <div class="travel-card">
-        <h3>Hotel Accommodations</h3>
-        <p class="coming-soon">Hotel recommendations and room block information will be added soon. Please check back for updates!</p>
+    </div>
+
+    <div class="section-header" style="margin-top:56px;margin-bottom:32px;">
+      <span class="section-label">Room Blocks</span>
+      <h2 style="font-size:clamp(1.4rem,3vw,2rem);">Hotel Accommodations</h2>
+      <p style="font-size:.8rem;color:var(--rose);margin-top:12px;font-style:italic;">Book by September 3, 2026 to guarantee your rate &nbsp;·&nbsp; Arrival Oct 2, Depart Oct 4 recommended</p>
+    </div>
+    <div class="hotel-grid">
+      <div class="hotel-card">
+        <h3>Hampton Inn &amp; Suites</h3>
+        <p class="hotel-location">Charles Town, WV &nbsp;·&nbsp; <a href="tel:3047252200">(304) 725-2200</a></p>
+        <p class="hotel-address">157 Pimlico Drive, Charles Town, WV 25414</p>
+        <p class="hotel-rate">$179 / night</p>
+        <p class="hotel-note">Book by phone — ask for the <strong>Brennan-Reyes Wedding</strong> room block</p>
+        <p class="hotel-cutoff">Cut-off: September 3, 2026</p>
+      </div>
+      <div class="hotel-card">
+        <h3>Best Western Leesburg</h3>
+        <p class="hotel-location">Leesburg, VA &nbsp;·&nbsp; <a href="tel:9177045979">(917) 704-5979</a></p>
+        <p class="hotel-address">726 E Market Street, Leesburg, VA 20176</p>
+        <p class="hotel-rate">$149 / night</p>
+        <p class="hotel-note">Group name: <strong>Reyes/Brennan Wedding</strong><br/>Free cancellation before 4:00 PM on Oct 2, 2026</p>
+        <a href="https://www.bestwestern.com/en_US/book/hotel-rooms.47076.html?groupId=4H8YK2Z7" target="_blank" rel="noopener noreferrer" class="hotel-link">Book Online &rarr;</a>
+      </div>
+      <div class="hotel-card">
+        <h3>Holiday Inn Express</h3>
+        <p class="hotel-location">Charles Town, WV &nbsp;·&nbsp; <a href="tel:3047251330">(304) 725-1330</a></p>
+        <p class="hotel-address">681 Flowing Springs Rd, Ransom, WV 25438</p>
+        <p class="hotel-rate">$169 / night</p>
+        <p class="hotel-note">Group name: <strong>Brennan/Reyes Wedding</strong></p>
+        <p class="coming-soon">Direct booking link coming soon</p>
+      </div>
+      <div class="hotel-card">
+        <h3>Hyatt Place Dulles North</h3>
+        <p class="hotel-location">Dulles, VA &nbsp;·&nbsp; <a href="tel:8778037534">(877) 803-7534</a></p>
+        <p class="hotel-address">21481 Ridgetop Circle, Dulles, VA 20166</p>
+        <p class="hotel-rate">$139 / night</p>
+        <p class="hotel-note">Group Code: <strong>G-BRWO</strong></p>
+        <a href="https://www.hyatt.com/events/en-US/group-booking/IADZN/G-BRWO" target="_blank" rel="noopener noreferrer" class="hotel-link">Book Online &rarr;</a>
       </div>
     </div>
   </div>
@@ -1132,6 +1240,38 @@
 </footer>
 
 <script>
+  /*
+   * GUEST LIST — one entry per household/invitation
+   * Format: 'CODE': 'Name as it should appear in the RSVP form'
+   * Send each guest a link like: https://yoursite.com/?code=CODE
+   * Codes are case-insensitive. Keep codes random (not guessable).
+   *
+   * Example:
+   *   'X7K2M9': 'John & Jane Smith',
+   *   'Q4P8R1': 'Robert Johnson',
+   */
+  const guestList = {
+    // Add guests here
+  };
+
+  function initRSVP() {
+    const params  = new URLSearchParams(window.location.search);
+    const code    = (params.get('code') || '').toUpperCase().trim();
+    const guest   = guestList[code];
+    const form    = document.getElementById('rsvp-form');
+    const locked  = document.getElementById('rsvp-locked');
+    const note    = document.getElementById('rsvp-note');
+
+    if (guest) {
+      document.getElementById('name').value = guest;
+      document.getElementById('invite-code-field').value = code;
+      form.style.display   = 'block';
+      note.style.display   = 'block';
+      locked.style.display = 'none';
+    }
+    // else: locked state stays visible (default)
+  }
+
   // Countdown
   const weddingDate = new Date('2026-10-03T16:30:00');
   function pad(n) { return String(n).padStart(2, '0'); }
@@ -1145,6 +1285,8 @@
   }
   tick();
   setInterval(tick, 1000);
+
+  initRSVP();
 
   // Sticky nav
   const nav = document.getElementById('site-nav');
