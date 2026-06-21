@@ -123,12 +123,13 @@
     }
     .corner {
       position: absolute;
-      width: 280px;
+      width: clamp(180px, 28vw, 340px);
+      height: auto;
       pointer-events: none;
     }
     .corner-tl { top: 0; left: 0; }
-    .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
-    @media (max-width: 480px) { .corner { width: 160px; } }
+    .corner-br { bottom: 0; right: 0; }
+    @media (max-width: 480px) { .corner { width: clamp(130px, 40vw, 180px); } }
 
     .monogram {
       width: 88px; height: 88px;
@@ -354,7 +355,16 @@
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--rose);
-      margin-bottom: 36px;
+      margin-bottom: 6px;
+    }
+    .day-dress {
+      text-align: center;
+      font-size: .6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--warm);
+      opacity: .75;
+      margin-bottom: 28px;
     }
     .timeline { position: relative; padding-left: 28px; }
     .timeline::before {
@@ -792,63 +802,8 @@
 
 <!-- ── HERO ── -->
 <section id="home" class="section-hero">
-  <svg class="corner corner-tl" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g opacity="0.8">
-      <path d="M10 310 Q60 200 130 130" stroke="#8a9e88" stroke-width="1.2" fill="none"/>
-      <path d="M10 310 Q80 240 170 80" stroke="#8a9e88" stroke-width="1" fill="none"/>
-      <path d="M10 310 Q40 260 90 200" stroke="#c9877a" stroke-width=".8" fill="none" stroke-dasharray="2 4"/>
-      <path d="M10 310 Q25 290 45 265" stroke="#8b3a52" stroke-width=".7" fill="none" stroke-dasharray="1 5"/>
-      <ellipse cx="130" cy="130" rx="22" ry="10" fill="#8a9e88" opacity=".5" transform="rotate(-40 130 130)"/>
-      <ellipse cx="110" cy="155" rx="18" ry="8" fill="#8a9e88" opacity=".4" transform="rotate(-55 110 155)"/>
-      <ellipse cx="80"  cy="180" rx="20" ry="9" fill="#a8c5a0" opacity=".4" transform="rotate(-30 80 180)"/>
-      <ellipse cx="150" cy="105" rx="16" ry="7" fill="#8a9e88" opacity=".45" transform="rotate(-60 150 105)"/>
-      <ellipse cx="95"  cy="165" rx="14" ry="6" fill="#5c7a5a" opacity=".35" transform="rotate(-45 95 165)"/>
-      <!-- hydrangea cluster -->
-      <circle cx="128" cy="130" r="6" fill="#c9877a" opacity=".6"/>
-      <circle cx="140" cy="122" r="5" fill="#c9877a" opacity=".5"/>
-      <circle cx="116" cy="122" r="5" fill="#b5796b" opacity=".55"/>
-      <circle cx="134" cy="114" r="4" fill="#8b3a52" opacity=".45"/>
-      <circle cx="122" cy="114" r="4" fill="#c9877a" opacity=".5"/>
-      <!-- deep rose -->
-      <circle cx="170" cy="78"  r="12" fill="#8b3a52" opacity=".5"/>
-      <circle cx="170" cy="78"  r="8"  fill="#c9877a" opacity=".65"/>
-      <circle cx="170" cy="78"  r="4"  fill="#e0a898" opacity=".85"/>
-      <ellipse cx="155" cy="108" rx="5" ry="7" fill="#c9877a" opacity=".4" transform="rotate(-20 155 108)"/>
-      <ellipse cx="100" cy="195" rx="4" ry="6" fill="#e0a898" opacity=".45" transform="rotate(10 100 195)"/>
-      <ellipse cx="58"  cy="242" rx="4" ry="6" fill="#c9877a" opacity=".35" transform="rotate(-10 58 242)"/>
-      <circle cx="95"  cy="172" r="3" fill="#b5796b" opacity=".4"/>
-      <circle cx="87"  cy="179" r="2" fill="#8b3a52" opacity=".38"/>
-      <circle cx="145" cy="118" r="2" fill="#8a9e88" opacity=".5"/>
-    </g>
-  </svg>
-
-  <svg class="corner corner-br" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g opacity="0.8">
-      <path d="M10 310 Q60 200 130 130" stroke="#8a9e88" stroke-width="1.2" fill="none"/>
-      <path d="M10 310 Q80 240 170 80" stroke="#8a9e88" stroke-width="1" fill="none"/>
-      <path d="M10 310 Q40 260 90 200" stroke="#c9877a" stroke-width=".8" fill="none" stroke-dasharray="2 4"/>
-      <path d="M10 310 Q25 290 45 265" stroke="#8b3a52" stroke-width=".7" fill="none" stroke-dasharray="1 5"/>
-      <ellipse cx="130" cy="130" rx="22" ry="10" fill="#8a9e88" opacity=".5" transform="rotate(-40 130 130)"/>
-      <ellipse cx="110" cy="155" rx="18" ry="8" fill="#8a9e88" opacity=".4" transform="rotate(-55 110 155)"/>
-      <ellipse cx="80"  cy="180" rx="20" ry="9" fill="#a8c5a0" opacity=".4" transform="rotate(-30 80 180)"/>
-      <ellipse cx="150" cy="105" rx="16" ry="7" fill="#8a9e88" opacity=".45" transform="rotate(-60 150 105)"/>
-      <ellipse cx="95"  cy="165" rx="14" ry="6" fill="#5c7a5a" opacity=".35" transform="rotate(-45 95 165)"/>
-      <circle cx="128" cy="130" r="6" fill="#c9877a" opacity=".6"/>
-      <circle cx="140" cy="122" r="5" fill="#c9877a" opacity=".5"/>
-      <circle cx="116" cy="122" r="5" fill="#b5796b" opacity=".55"/>
-      <circle cx="134" cy="114" r="4" fill="#8b3a52" opacity=".45"/>
-      <circle cx="122" cy="114" r="4" fill="#c9877a" opacity=".5"/>
-      <circle cx="170" cy="78"  r="12" fill="#8b3a52" opacity=".5"/>
-      <circle cx="170" cy="78"  r="8"  fill="#c9877a" opacity=".65"/>
-      <circle cx="170" cy="78"  r="4"  fill="#e0a898" opacity=".85"/>
-      <ellipse cx="155" cy="108" rx="5" ry="7" fill="#c9877a" opacity=".4" transform="rotate(-20 155 108)"/>
-      <ellipse cx="100" cy="195" rx="4" ry="6" fill="#e0a898" opacity=".45" transform="rotate(10 100 195)"/>
-      <ellipse cx="58"  cy="242" rx="4" ry="6" fill="#c9877a" opacity=".35" transform="rotate(-10 58 242)"/>
-      <circle cx="95"  cy="172" r="3" fill="#b5796b" opacity=".4"/>
-      <circle cx="87"  cy="179" r="2" fill="#8b3a52" opacity=".38"/>
-      <circle cx="145" cy="118" r="2" fill="#8a9e88" opacity=".5"/>
-    </g>
-  </svg>
+  <img src="frame%20L.png" class="corner corner-tl" alt="" aria-hidden="true" />
+  <img src="frame%20R.png" class="corner corner-br" alt="" aria-hidden="true" />
 
   <img src="swans-red.svg" class="hero-swans" alt="" aria-hidden="true" />
 
@@ -928,6 +883,7 @@
         <img src="hat.svg" class="day-illustration" alt="" aria-hidden="true" />
         <h3>Welcome Party</h3>
         <p class="day-sub">Friday &nbsp;·&nbsp; October 2, 2026</p>
+        <p class="day-dress">Western Attire</p>
         <div class="timeline">
           <div class="timeline-item">
             <p class="timeline-time">5:00 PM</p>
@@ -944,6 +900,7 @@
         <img src="altar.svg" class="day-illustration" alt="" aria-hidden="true" />
         <h3>Wedding Day</h3>
         <p class="day-sub">Saturday &nbsp;·&nbsp; October 3, 2026</p>
+        <p class="day-dress">Formal Attire</p>
         <div class="timeline">
           <div class="timeline-item">
             <p class="timeline-time">4:00 PM</p>
@@ -975,6 +932,7 @@
         <img src="pancakes.svg" class="day-illustration" alt="" aria-hidden="true" />
         <h3>Morning After</h3>
         <p class="day-sub">Sunday &nbsp;·&nbsp; October 4, 2026</p>
+        <p class="day-dress">Casual Attire</p>
         <div class="timeline">
           <div class="timeline-item">
             <p class="timeline-time">Morning</p>
