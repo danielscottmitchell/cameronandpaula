@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cameron & Paula — October 3, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blush:   #f5e6e0;
+      --rose:    #c9877a;
+      --dusty:   #b5796b;
+      --sage:    #8a9e88;
+      --cream:   #fdf8f5;
+      --charcoal:#3d3530;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── Decorative SVG corners ── */
+    .corner {
+      position: fixed;
+      width: 260px;
+      opacity: .55;
+      pointer-events: none;
+    }
+    .corner-tl { top: 0; left: 0; transform: none; }
+    .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
+
+    /* ── Layout ── */
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Monogram / initial ring ── */
+    .monogram {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      color: var(--rose);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: .15em;
+    }
+
+    /* ── Names ── */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.6rem, 8vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: .02em;
+      color: var(--charcoal);
+    }
+    h1 em {
+      display: block;
+      font-style: italic;
+      color: var(--rose);
+      font-size: .55em;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 28px auto;
+      width: min(340px, 90%);
+    }
+    .divider hr { flex: 1; border: none; border-top: 1px solid var(--rose); opacity: .5; }
+    .divider svg { flex-shrink: 0; }
+
+    /* ── Date ── */
+    .date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--dusty);
+      font-weight: 400;
+    }
+
+    /* ── Countdown ── */
+    .countdown {
+      display: flex;
+      gap: clamp(16px, 4vw, 44px);
+      margin: 40px 0 36px;
+    }
+    .unit { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .unit-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 7vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--charcoal);
+      min-width: 2ch;
+    }
+    .unit-label {
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+    .dot {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--rose);
+      opacity: .4;
+      align-self: flex-start;
+      margin-top: 6px;
+    }
+
+    /* ── Tagline ── */
+    .tagline {
+      font-size: .8rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-top: 4px;
+    }
+
+    /* ── Floral SVG bottom center ── */
+    .floral-bottom {
+      margin-top: 48px;
+      opacity: .6;
+    }
+
+    @media (max-width: 420px) {
+      .corner { width: 160px; }
+      .countdown { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Corner botanicals -->
+<svg class="corner corner-tl" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.9">
+    <!-- stems -->
+    <path d="M10 310 Q60 200 130 130" stroke="#8a9e88" stroke-width="1.2" fill="none"/>
+    <path d="M10 310 Q80 240 170 80" stroke="#8a9e88" stroke-width="1" fill="none"/>
+    <path d="M10 310 Q40 260 90 200" stroke="#c9877a" stroke-width=".8" fill="none" stroke-dasharray="2 4"/>
+    <!-- leaves -->
+    <ellipse cx="130" cy="130" rx="22" ry="10" fill="#8a9e88" opacity=".55" transform="rotate(-40 130 130)"/>
+    <ellipse cx="110" cy="155" rx="18" ry="8" fill="#8a9e88" opacity=".4" transform="rotate(-55 110 155)"/>
+    <ellipse cx="80" cy="180" rx="20" ry="9" fill="#a8c5a0" opacity=".45" transform="rotate(-30 80 180)"/>
+    <ellipse cx="150" cy="105" rx="16" ry="7" fill="#8a9e88" opacity=".5" transform="rotate(-60 150 105)"/>
+    <!-- roses -->
+    <circle cx="130" cy="128" r="14" fill="#c9877a" opacity=".7"/>
+    <circle cx="130" cy="128" r="9"  fill="#e0a898" opacity=".8"/>
+    <circle cx="130" cy="128" r="5"  fill="#f5e6e0"/>
+    <circle cx="170" cy="78"  r="10" fill="#c9877a" opacity=".6"/>
+    <circle cx="170" cy="78"  r="6"  fill="#e0a898" opacity=".75"/>
+    <circle cx="170" cy="78"  r="3"  fill="#f5e6e0"/>
+    <!-- small buds -->
+    <ellipse cx="155" cy="108" rx="5" ry="7" fill="#c9877a" opacity=".5" transform="rotate(-20 155 108)"/>
+    <ellipse cx="100" cy="195" rx="4" ry="6" fill="#e0a898" opacity=".55" transform="rotate(10 100 195)"/>
+    <ellipse cx="60"  cy="240" rx="4" ry="6" fill="#c9877a" opacity=".4" transform="rotate(-10 60 240)"/>
+    <!-- tiny berries -->
+    <circle cx="95"  cy="172" r="3" fill="#b5796b" opacity=".5"/>
+    <circle cx="88"  cy="178" r="2" fill="#b5796b" opacity=".45"/>
+    <circle cx="145" cy="118" r="2" fill="#8a9e88" opacity=".6"/>
+  </g>
+</svg>
+
+<svg class="corner corner-br" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.9">
+    <path d="M10 310 Q60 200 130 130" stroke="#8a9e88" stroke-width="1.2" fill="none"/>
+    <path d="M10 310 Q80 240 170 80" stroke="#8a9e88" stroke-width="1" fill="none"/>
+    <path d="M10 310 Q40 260 90 200" stroke="#c9877a" stroke-width=".8" fill="none" stroke-dasharray="2 4"/>
+    <ellipse cx="130" cy="130" rx="22" ry="10" fill="#8a9e88" opacity=".55" transform="rotate(-40 130 130)"/>
+    <ellipse cx="110" cy="155" rx="18" ry="8" fill="#8a9e88" opacity=".4" transform="rotate(-55 110 155)"/>
+    <ellipse cx="80" cy="180" rx="20" ry="9" fill="#a8c5a0" opacity=".45" transform="rotate(-30 80 180)"/>
+    <ellipse cx="150" cy="105" rx="16" ry="7" fill="#8a9e88" opacity=".5" transform="rotate(-60 150 105)"/>
+    <circle cx="130" cy="128" r="14" fill="#c9877a" opacity=".7"/>
+    <circle cx="130" cy="128" r="9"  fill="#e0a898" opacity=".8"/>
+    <circle cx="130" cy="128" r="5"  fill="#f5e6e0"/>
+    <circle cx="170" cy="78"  r="10" fill="#c9877a" opacity=".6"/>
+    <circle cx="170" cy="78"  r="6"  fill="#e0a898" opacity=".75"/>
+    <circle cx="170" cy="78"  r="3"  fill="#f5e6e0"/>
+    <ellipse cx="155" cy="108" rx="5" ry="7" fill="#c9877a" opacity=".5" transform="rotate(-20 155 108)"/>
+    <ellipse cx="100" cy="195" rx="4" ry="6" fill="#e0a898" opacity=".55" transform="rotate(10 100 195)"/>
+    <ellipse cx="60"  cy="240" rx="4" ry="6" fill="#c9877a" opacity=".4" transform="rotate(-10 60 240)"/>
+    <circle cx="95"  cy="172" r="3" fill="#b5796b" opacity=".5"/>
+    <circle cx="88"  cy="178" r="2" fill="#b5796b" opacity=".45"/>
+    <circle cx="145" cy="118" r="2" fill="#8a9e88" opacity=".6"/>
+  </g>
+</svg>
+
+<main>
+  <div class="monogram">C&P</div>
+
+  <h1>
+    Cameron
+    <em>&amp;</em>
+    Paula
+  </h1>
+
+  <div class="divider">
+    <hr />
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C12 2 8 6 8 10a4 4 0 008 0C16 6 12 2 12 2z" fill="#c9877a" opacity=".7"/>
+      <path d="M12 22C12 22 8 18 8 14a4 4 0 008 0C16 18 12 22 12 22z" fill="#8a9e88" opacity=".6"/>
+    </svg>
+    <hr />
+  </div>
+
+  <p class="date">October 3, 2026</p>
+
+  <div class="countdown" id="countdown">
+    <div class="unit"><span class="unit-num" id="cd-days">--</span><span class="unit-label">Days</span></div>
+    <span class="dot">·</span>
+    <div class="unit"><span class="unit-num" id="cd-hours">--</span><span class="unit-label">Hours</span></div>
+    <span class="dot">·</span>
+    <div class="unit"><span class="unit-num" id="cd-min">--</span><span class="unit-label">Minutes</span></div>
+    <span class="dot">·</span>
+    <div class="unit"><span class="unit-num" id="cd-sec">--</span><span class="unit-label">Seconds</span></div>
+  </div>
+
+  <p class="tagline">More details coming soon</p>
+
+  <!-- small inline floral sprig -->
+  <svg class="floral-bottom" width="160" height="48" viewBox="0 0 160 48" fill="none">
+    <path d="M80 48 Q70 30 50 20" stroke="#8a9e88" stroke-width="1" fill="none"/>
+    <path d="M80 48 Q90 30 110 20" stroke="#8a9e88" stroke-width="1" fill="none"/>
+    <path d="M80 48 Q75 25 60 10" stroke="#8a9e88" stroke-width=".8" fill="none"/>
+    <path d="M80 48 Q85 25 100 10" stroke="#8a9e88" stroke-width=".8" fill="none"/>
+    <ellipse cx="50" cy="20" rx="12" ry="6" fill="#8a9e88" opacity=".5" transform="rotate(-30 50 20)"/>
+    <ellipse cx="110" cy="20" rx="12" ry="6" fill="#8a9e88" opacity=".5" transform="rotate(30 110 20)"/>
+    <circle cx="60" cy="10" r="7" fill="#c9877a" opacity=".65"/>
+    <circle cx="60" cy="10" r="4" fill="#e0a898" opacity=".8"/>
+    <circle cx="60" cy="10" r="2" fill="#fdf8f5"/>
+    <circle cx="100" cy="10" r="7" fill="#c9877a" opacity=".65"/>
+    <circle cx="100" cy="10" r="4" fill="#e0a898" opacity=".8"/>
+    <circle cx="100" cy="10" r="2" fill="#fdf8f5"/>
+    <circle cx="80" cy="2"  r="5" fill="#c9877a" opacity=".55"/>
+    <circle cx="80" cy="2"  r="3" fill="#e0a898" opacity=".7"/>
+  </svg>
+</main>
+
+<script>
+  const wedding = new Date('2026-10-03T17:00:00');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = wedding - Date.now();
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent  = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-min').textContent   = '00';
+      document.getElementById('cd-sec').textContent   = '00';
+      return;
+    }
+    const s = Math.floor(diff / 1000);
+    document.getElementById('cd-days').textContent  = pad(Math.floor(s / 86400));
+    document.getElementById('cd-hours').textContent = pad(Math.floor((s % 86400) / 3600));
+    document.getElementById('cd-min').textContent   = pad(Math.floor((s % 3600) / 60));
+    document.getElementById('cd-sec').textContent   = pad(s % 60);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
