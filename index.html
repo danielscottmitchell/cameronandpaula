@@ -114,11 +114,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 80px 24px 80px;
+      padding: 90px 24px 72px;
       text-align: center;
       position: relative;
       background: var(--cream);
       overflow: hidden;
+      gap: 0;
     }
     .corner {
       position: absolute;
@@ -147,26 +148,27 @@
     h1.hero-names {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
-      font-size: clamp(2.8rem, 9vw, 5.5rem);
-      line-height: 1.0;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.05;
       letter-spacing: .02em;
       color: var(--charcoal);
+      margin-top: 12px;
     }
     h1.hero-names em {
       display: block;
       font-style: italic;
       color: var(--rose);
-      font-size: .5em;
+      font-size: .48em;
       letter-spacing: .2em;
       text-transform: uppercase;
-      margin: 10px 0;
+      margin: 6px 0;
     }
     .divider-sprig {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin: 28px auto;
-      width: min(360px, 90%);
+      margin: 18px auto;
+      width: min(320px, 90%);
     }
     .divider-sprig hr { flex: 1; border: none; border-top: 1px solid var(--rose); opacity: .4; }
     .hero-date {
@@ -182,21 +184,22 @@
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--sage);
-      margin-top: 8px;
+      margin-top: 6px;
     }
     .countdown {
       display: flex;
-      gap: clamp(16px, 4vw, 48px);
-      margin: 40px 0 36px;
+      gap: clamp(16px, 4vw, 44px);
+      margin: 28px 0 20px;
     }
     .unit { display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .unit-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 7vw, 4rem);
+      font-size: clamp(2rem, 6vw, 3.4rem);
       font-weight: 300;
       line-height: 1;
       color: var(--charcoal);
-      min-width: 2ch;
+      min-width: 3ch;
+      text-align: center;
     }
     .unit-label { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--sage); }
     .dot {
@@ -745,10 +748,10 @@
 
     /* ── ILLUSTRATIONS ── */
     .hero-swans {
-      width: clamp(150px, 30vw, 240px);
+      width: clamp(120px, 22vw, 180px);
       height: auto;
       opacity: .85;
-      margin-top: 16px;
+      margin-bottom: 4px;
     }
     .day-illustration {
       display: block;
