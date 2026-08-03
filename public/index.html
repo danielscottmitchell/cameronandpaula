@@ -530,6 +530,27 @@
     }
     .rsvp-locked a { color: var(--rose); text-decoration: none; }
     .rsvp-locked a:hover { text-decoration: underline; }
+    .rsvp-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 40px;
+      border: 1px solid var(--rose);
+      border-radius: 999px;
+      background: var(--rose);
+      color: var(--cream) !important;
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      transition: background .2s ease, color .2s ease;
+    }
+    .rsvp-cta:hover {
+      background: transparent;
+      color: var(--rose) !important;
+      text-decoration: none !important;
+    }
 
     /* ── TRAVEL ── */
     .venue-card {
@@ -1094,11 +1115,11 @@
     <img src="invite.svg" class="section-illustration" alt="" aria-hidden="true" />
     <div class="rsvp-intro">
       <span class="rsvp-deadline">Kindly respond by September 1, 2026</span>
-      <p>We'd love to celebrate with you. Please fill out the form below to let us know if you'll be joining us. Invitations are extended to named guests only; we are unable to accommodate plus ones or children unless specifically noted on your invitation.</p>
+      <p>We'd love to celebrate with you. Please let us know if you'll be joining us. Invitations are extended to named guests only; we are unable to accommodate plus ones or children unless specifically noted on your invitation.</p>
     </div>
     <div class="rsvp-locked">
-      <p>RSVP coming soon.</p>
-      <p class="rsvp-locked-sub">Check back here. Invitations will include a personalized link when RSVPs open.</p>
+      <a class="rsvp-cta" href="/rsvp">Reply to your invitation</a>
+      <p class="rsvp-locked-sub">Look yourself up by name. One reply covers your whole household, and you can change it until September 1.</p>
     </div>
   </div>
 </section>
@@ -1375,37 +1396,8 @@
 </footer>
 
 <script>
-  /*
-   * GUEST LIST — one entry per household/invitation
-   * Format: 'CODE': 'Name as it should appear in the RSVP form'
-   * Send each guest a link like: https://yoursite.com/?code=CODE
-   * Codes are case-insensitive. Keep codes random (not guessable).
-   *
-   * Example:
-   *   'X7K2M9': 'John & Jane Smith',
-   *   'Q4P8R1': 'Robert Johnson',
-   */
-  const guestList = {
-    // Add guests here
-  };
-
-  function initRSVP() {
-    const params  = new URLSearchParams(window.location.search);
-    const code    = (params.get('code') || '').toUpperCase().trim();
-    const guest   = guestList[code];
-    const form    = document.getElementById('rsvp-form');
-    const locked  = document.getElementById('rsvp-locked');
-    const note    = document.getElementById('rsvp-note');
-
-    if (guest) {
-      document.getElementById('name').value = guest;
-      document.getElementById('invite-code-field').value = code;
-      form.style.display   = 'block';
-      note.style.display   = 'block';
-      locked.style.display = 'none';
-    }
-    // else: locked state stays visible (default)
-  }
+  // The invite-code RSVP stub lived here. Replies now happen at /rsvp, where a
+  // guest finds their household by name. No codes, no personalized links.
 
   // Countdown
   const weddingDate = new Date('2026-10-03T16:30:00');
@@ -1420,8 +1412,6 @@
   }
   tick();
   setInterval(tick, 1000);
-
-  initRSVP();
 
   // Sticky nav
   const nav = document.getElementById('site-nav');

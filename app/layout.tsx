@@ -46,9 +46,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
       <body>
+        {/* Next only renders /rsvp. The wedding site's own nav lives in the
+            static page, so this is just the way back to it. */}
         <header className="site-header">
-          <a className="rsvp-button" href="/rsvp">
-            RSVP
+          <a className="rsvp-button" href="/">
+            ← Cameron &amp; Paula
           </a>
         </header>
         {children}
