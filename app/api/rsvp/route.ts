@@ -11,7 +11,7 @@ import {
 } from '@/lib/airtable';
 import { clientIp, rateLimit } from '@/lib/rateLimit';
 import { EVENTS, isInvited, isPastDeadline } from '@/lib/config';
-import { digitsOnly } from '@/lib/normalize';
+import { normalizePhone } from '@/lib/normalize';
 
 const attending = z.enum(['yes', 'no']);
 
@@ -51,8 +51,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'invalid' }, { status: 400 });
   }
 
-  const phone = digitsOnly(body.phone);
-  if (phone.length !== 10) {
+  // Asked for, not demanded. A household without a phone still gets to reply,
+  // but a half typed number is rejected rather than stored.
+  const phone = normalizePhone(body.phone);
+  if (phone && phone.length !== 10) {
     return NextResponse.json({ error: 'phone', message: 'Enter a 10 digit phone number.' }, { status: 400 });
   }
 
