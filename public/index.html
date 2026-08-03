@@ -707,8 +707,8 @@
     }
     .hotel-link:hover { text-decoration: underline; }
 
-    /* ── REGISTRY ── */
-    .registry-note {
+    /* ── GIFTS ── */
+    .gift-note {
       text-align: center;
       max-width: 620px;
       margin: 0 auto;
@@ -716,7 +716,7 @@
       border: 1px solid rgba(201,135,122,.2);
       background: var(--cream);
     }
-    .registry-note p {
+    .gift-note p {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.15rem;
       font-style: italic;
@@ -810,6 +810,7 @@
     .faq-item.open .faq-icon::before { opacity: 0; transform: rotate(90deg); }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
     .faq-answer-inner { padding: 0 0 24px; font-size: .84rem; line-height: 1.85; color: var(--warm); }
+    .faq-answer-inner a { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
     .faq-item.open .faq-answer { max-height: 300px; }
 
     /* ── GALLERY ── */
@@ -952,8 +953,8 @@
       .rsvp-locked { padding: 36px 20px; }
       .rsvp-intro { margin-bottom: 32px; }
 
-      /* Registry */
-      .registry-note { padding: 36px 24px; }
+      /* Gifts */
+      .gift-note { padding: 36px 24px; }
 
       /* Wedding Party */
       .party-grid { gap: 36px; }
@@ -996,7 +997,7 @@
       <li><a href="#details">Weekend</a></li>
       <li><a href="#rsvp">RSVP</a></li>
       <li><a href="#travel">Travel</a></li>
-      <li><a href="#registry">Registry</a></li>
+      <li><a href="#gifts">Gifts</a></li>
       <li><a href="#wedding-party">Party</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#gallery">Gallery</a></li>
@@ -1229,7 +1230,7 @@
             </td>
             <td>157 Pimlico Drive<br/>Charles Town, WV 25414</td>
             <td><span class="ht-rate">$179 / night</span></td>
-            <td>Call and ask for the <strong>Brennan-Reyes Wedding</strong> block<br/><em style="font-size:.72rem;color:var(--sage)">Cut-off: Sept 3, 2026</em></td>
+            <td>Call and ask for the <strong>Brennan-Reyes Wedding</strong> block<br/><em style="font-size:.72rem;color:var(--sage)">Cut-off: Sept 2, 2026</em></td>
             <td></td>
           </tr>
           <tr>
@@ -1271,16 +1272,16 @@
   </div>
 </section>
 
-<!-- ── REGISTRY ── -->
-<section id="registry" class="section section-alt">
+<!-- ── GIFTS ── -->
+<section id="gifts" class="section section-alt">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-label">The Wish List</span>
-      <h2>Registry</h2>
+      <span class="section-label">With Gratitude</span>
+      <h2>Gifts</h2>
       <div class="section-rule"></div>
     </div>
     <img src="giftbag.svg" class="section-illustration" alt="" aria-hidden="true" />
-    <div class="registry-note">
+    <div class="gift-note">
       <p>We are incredibly grateful for your love and support. As we&rsquo;ve already built a home together, your presence is truly the greatest gift. If you&rsquo;d like to celebrate with a gift, many have asked for a way to contribute toward our future together.</p>
       <a class="cta-pill" href="https://www.honeyfund.com/site/brennan-reyes-10-03-2026" target="_blank" rel="noopener noreferrer">Visit our Honeyfund</a>
     </div>
@@ -1369,7 +1370,7 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" role="region">
-          <div class="faq-answer-inner">A designated card box will be available at the venue for cards and well wishes. For gifts, please consider items from our registry for easy coordination.</div>
+          <div class="faq-answer-inner">A designated card box will be available at the venue for cards and well wishes.</div>
         </div>
       </div>
       <div class="faq-item">
