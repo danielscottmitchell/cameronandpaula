@@ -143,12 +143,13 @@
 
     /* ── HERO ── */
     .section-hero {
-      min-height: 100vh;
+      min-height: calc(100vh - var(--banner-h));
+      min-height: calc(100dvh - var(--banner-h));
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 90px 24px 72px;
+      padding: calc(var(--banner-h) + 90px) 24px 104px;
       text-align: center;
       position: relative;
       background: var(--cream);
@@ -258,6 +259,7 @@
       gap: 8px;
     }
     .scroll-hint svg { animation: bounce 2s ease-in-out infinite; }
+    @media (max-height: 720px) { .scroll-hint { display: none; } }
     @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
     /* ── SHARED SECTION ── */
@@ -562,7 +564,7 @@
     }
     .rsvp-locked a { color: var(--rose); text-decoration: none; }
     .rsvp-locked a:hover { text-decoration: underline; }
-    .rsvp-cta {
+    .cta-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -578,7 +580,7 @@
       text-transform: uppercase;
       transition: background .2s ease, color .2s ease;
     }
-    .rsvp-cta:hover {
+    .cta-pill:hover {
       background: transparent;
       color: var(--rose) !important;
       text-decoration: none !important;
@@ -706,29 +708,22 @@
     .hotel-link:hover { text-decoration: underline; }
 
     /* ── REGISTRY ── */
-    .registry-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
+    .registry-note {
+      text-align: center;
       max-width: 620px;
       margin: 0 auto;
-    }
-    .registry-card {
-      text-align: center;
-      padding: 52px 32px;
+      padding: 52px 40px;
       border: 1px solid rgba(201,135,122,.2);
       background: var(--cream);
-      transition: box-shadow .25s, border-color .25s;
     }
-    .registry-card:hover { border-color: var(--rose); box-shadow: 0 4px 24px rgba(201,135,122,.1); }
-    .registry-card h3 {
+    .registry-note p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--charcoal);
-      margin-bottom: 12px;
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.8;
+      color: var(--warm);
+      margin-bottom: 32px;
     }
-    .registry-card p { font-size: .78rem; color: var(--sage); font-style: italic; }
     .btn-outline {
       display: inline-block;
       margin-top: 24px;
@@ -923,8 +918,8 @@
       .section-header { margin-bottom: 36px; }
 
       /* Hero */
-      .section-hero { padding: 80px 20px 56px; }
-      .scroll-hint { bottom: 160px; }
+      .section-hero { padding: calc(var(--banner-h) + 80px) 20px 88px; }
+      .scroll-hint { bottom: 32px; }
       .hero-swans { width: clamp(80px, 22vw, 120px); }
       .countdown { gap: 10px; margin: 20px 0 16px; }
       .unit-num { font-size: clamp(1.7rem, 7vw, 2.4rem); }
@@ -949,7 +944,7 @@
       .rsvp-intro { margin-bottom: 32px; }
 
       /* Registry */
-      .registry-card { padding: 36px 20px; }
+      .registry-note { padding: 36px 24px; }
 
       /* Wedding Party */
       .party-grid { gap: 36px; }
@@ -1155,7 +1150,7 @@
       <p>We'd love to celebrate with you. Please let us know if you'll be joining us. Invitations are extended to named guests only; we are unable to accommodate plus ones or children unless specifically noted on your invitation.</p>
     </div>
     <div class="rsvp-locked">
-      <a class="rsvp-cta" href="/rsvp">Reply to your invitation</a>
+      <a class="cta-pill" href="/rsvp">Reply to your invitation</a>
       <p class="rsvp-locked-sub">Look yourself up by name. One reply covers your whole household, and you can change it until September 1.</p>
     </div>
   </div>
@@ -1276,15 +1271,9 @@
       <div class="section-rule"></div>
     </div>
     <img src="giftbag.svg" class="section-illustration" alt="" aria-hidden="true" />
-    <div class="registry-grid">
-      <div class="registry-card">
-        <h3>Amazon</h3>
-        <p>Link coming soon</p>
-      </div>
-      <div class="registry-card">
-        <h3>Crate &amp; Barrel</h3>
-        <p>Link coming soon</p>
-      </div>
+    <div class="registry-note">
+      <p>We are incredibly grateful for your love and support. As we&rsquo;ve already built a home together, your presence is truly the greatest gift. If you&rsquo;d like to celebrate with a gift, many have asked for a way to contribute toward our future together.</p>
+      <a class="cta-pill" href="https://www.honeyfund.com/site/brennan-reyes-10-03-2026" target="_blank" rel="noopener noreferrer">Visit our Honeyfund</a>
     </div>
   </div>
 </section>

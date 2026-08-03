@@ -24,7 +24,7 @@ export const EVENTS = [
     key: 'breakfast',
     label: 'Farewell Breakfast',
     day: 'Sunday',
-    detail: 'Oct 4, 10:00 AM to 1:00 PM · Brennan House · Comfortable attire',
+    detail: 'Oct 4, 10:00 AM · Brennan House · Comfortable attire',
     invitedField: 'invited_breakfast',
     respField: 'attending_breakfast',
   },
