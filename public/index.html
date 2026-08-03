@@ -21,9 +21,41 @@
       --sage:     #8a9e88;
       --charcoal: #3d3530;
       --warm:     #6b4c3b;
+      --banner-h: 40px;
     }
 
     html { scroll-behavior: smooth; }
+    /* The banner and the nav are both fixed, so anchor jumps have to clear
+       them or every section heading lands underneath. */
+    html { scroll-padding-top: calc(var(--banner-h) + 64px); }
+
+    /* ── RSVP BANNER ── */
+    .rsvp-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 101;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: var(--banner-h);
+      padding: 0 16px;
+      background: var(--rose);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      transition: background .2s ease;
+    }
+    .rsvp-banner:hover { background: var(--dusty); }
+    .rsvp-banner .banner-arrow { transition: transform .2s ease; }
+    .rsvp-banner:hover .banner-arrow { transform: translateX(3px); }
+    @media (max-width: 560px) {
+      .rsvp-banner { font-size: .68rem; letter-spacing: .1em; gap: 7px; }
+    }
 
     body {
       background: var(--cream);
@@ -36,7 +68,7 @@
     /* ── NAV ── */
     .site-nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: var(--banner-h); left: 0; right: 0;
       z-index: 100;
       background: var(--cream);
       transition: background .3s, box-shadow .3s;
@@ -111,12 +143,13 @@
 
     /* ── HERO ── */
     .section-hero {
-      min-height: 100vh;
+      min-height: calc(100vh - var(--banner-h));
+      min-height: calc(100dvh - var(--banner-h));
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 90px 24px 72px;
+      padding: calc(var(--banner-h) + 90px) 24px 104px;
       text-align: center;
       position: relative;
       background: var(--cream);
@@ -226,6 +259,7 @@
       gap: 8px;
     }
     .scroll-hint svg { animation: bounce 2s ease-in-out infinite; }
+    @media (max-height: 720px) { .scroll-hint { display: none; } }
     @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
     /* ── SHARED SECTION ── */
@@ -530,6 +564,27 @@
     }
     .rsvp-locked a { color: var(--rose); text-decoration: none; }
     .rsvp-locked a:hover { text-decoration: underline; }
+    .cta-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 40px;
+      border: 1px solid var(--rose);
+      border-radius: 999px;
+      background: var(--rose);
+      color: var(--cream) !important;
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      transition: background .2s ease, color .2s ease;
+    }
+    .cta-pill:hover {
+      background: transparent;
+      color: var(--rose) !important;
+      text-decoration: none !important;
+    }
 
     /* ── TRAVEL ── */
     .venue-card {
@@ -652,30 +707,23 @@
     }
     .hotel-link:hover { text-decoration: underline; }
 
-    /* ── REGISTRY ── */
-    .registry-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
+    /* ── GIFTS ── */
+    .gift-note {
+      text-align: center;
       max-width: 620px;
       margin: 0 auto;
-    }
-    .registry-card {
-      text-align: center;
-      padding: 52px 32px;
+      padding: 52px 40px;
       border: 1px solid rgba(201,135,122,.2);
       background: var(--cream);
-      transition: box-shadow .25s, border-color .25s;
     }
-    .registry-card:hover { border-color: var(--rose); box-shadow: 0 4px 24px rgba(201,135,122,.1); }
-    .registry-card h3 {
+    .gift-note p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--charcoal);
-      margin-bottom: 12px;
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.8;
+      color: var(--warm);
+      margin-bottom: 32px;
     }
-    .registry-card p { font-size: .78rem; color: var(--sage); font-style: italic; }
     .btn-outline {
       display: inline-block;
       margin-top: 24px;
@@ -762,6 +810,7 @@
     .faq-item.open .faq-icon::before { opacity: 0; transform: rotate(90deg); }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
     .faq-answer-inner { padding: 0 0 24px; font-size: .84rem; line-height: 1.85; color: var(--warm); }
+    .faq-answer-inner a { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
     .faq-item.open .faq-answer { max-height: 300px; }
 
     /* ── GALLERY ── */
@@ -816,6 +865,15 @@
     }
     .contact-card p { font-size: .82rem; line-height: 1.85; color: var(--warm); }
     .contact-card a { color: var(--rose); text-decoration: none; }
+    .contact-shared {
+      text-align: center;
+      margin-top: 28px;
+      font-size: .82rem;
+      line-height: 1.85;
+      color: var(--warm);
+    }
+    .contact-shared a { color: var(--rose); text-decoration: none; }
+    .contact-shared a:hover { text-decoration: underline; }
     .contact-card a:hover { text-decoration: underline; }
 
     /* ── FOOTER ── */
@@ -870,8 +928,8 @@
       .section-header { margin-bottom: 36px; }
 
       /* Hero */
-      .section-hero { padding: 80px 20px 56px; }
-      .scroll-hint { bottom: 160px; }
+      .section-hero { padding: calc(var(--banner-h) + 80px) 20px 88px; }
+      .scroll-hint { bottom: 32px; }
       .hero-swans { width: clamp(80px, 22vw, 120px); }
       .countdown { gap: 10px; margin: 20px 0 16px; }
       .unit-num { font-size: clamp(1.7rem, 7vw, 2.4rem); }
@@ -895,8 +953,8 @@
       .rsvp-locked { padding: 36px 20px; }
       .rsvp-intro { margin-bottom: 32px; }
 
-      /* Registry */
-      .registry-card { padding: 36px 20px; }
+      /* Gifts */
+      .gift-note { padding: 36px 24px; }
 
       /* Wedding Party */
       .party-grid { gap: 36px; }
@@ -925,6 +983,11 @@
 <body>
 
 <!-- ── NAV ── -->
+<a class="rsvp-banner" href="/rsvp">
+  <span>Kindly reply by September 1</span>
+  <span class="banner-arrow" aria-hidden="true">&rarr;</span>
+</a>
+
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <a class="nav-logo" href="#home">C &amp; P</a>
@@ -934,7 +997,7 @@
       <li><a href="#details">Weekend</a></li>
       <li><a href="#rsvp">RSVP</a></li>
       <li><a href="#travel">Travel</a></li>
-      <li><a href="#registry">Registry</a></li>
+      <li><a href="#gifts">Gifts</a></li>
       <li><a href="#wedding-party">Party</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#gallery">Gallery</a></li>
@@ -1069,13 +1132,13 @@
         <h3>Morning After</h3>
         <p class="day-sub">Sunday &nbsp;·&nbsp; October 4, 2026</p>
         <p class="day-venue">Brennan House</p>
-        <p class="day-location">Chantilly, VA</p>
+        <p class="day-location">Fairfax, VA</p>
         <p class="day-dress">Comfortable Attire</p>
         <div class="timeline">
           <div class="timeline-item">
-            <p class="timeline-time">Morning</p>
+            <p class="timeline-time">10:00 AM</p>
             <p class="timeline-event">Farewell Breakfast</p>
-            <p class="timeline-desc">Details to come</p>
+            <p class="timeline-desc">Come and go until 1:00 PM at the Brennan House</p>
           </div>
         </div>
       </div>
@@ -1094,11 +1157,11 @@
     <img src="invite.svg" class="section-illustration" alt="" aria-hidden="true" />
     <div class="rsvp-intro">
       <span class="rsvp-deadline">Kindly respond by September 1, 2026</span>
-      <p>We'd love to celebrate with you. Please fill out the form below to let us know if you'll be joining us. Invitations are extended to named guests only; we are unable to accommodate plus ones or children unless specifically noted on your invitation.</p>
+      <p>We'd love to celebrate with you. Please let us know if you'll be joining us. Invitations are extended to named guests only; we are unable to accommodate plus ones or children unless specifically noted on your invitation.</p>
     </div>
     <div class="rsvp-locked">
-      <p>RSVP coming soon.</p>
-      <p class="rsvp-locked-sub">Check back here. Invitations will include a personalized link when RSVPs open.</p>
+      <a class="cta-pill" href="/rsvp">Reply to your invitation</a>
+      <p class="rsvp-locked-sub">Look yourself up by name. One reply covers your whole household, and you can change it until September 1.</p>
     </div>
   </div>
 </section>
@@ -1120,6 +1183,13 @@
       <a href="https://maps.google.com/?q=13656+Harpers+Ferry+Rd+Purcellville+VA+20132" target="_blank" rel="noopener noreferrer" class="venue-directions">Get directions &rarr;</a>
     </div>
 
+    <div class="venue-card">
+      <span class="info-label">Farewell Breakfast</span>
+      <p class="venue-name">Brennan House</p>
+      <p class="venue-address">3503 Treaty Oak Ct &nbsp;·&nbsp; Fairfax, VA</p>
+      <a href="https://maps.google.com/?q=3503+Treaty+Oak+Ct+Fairfax+VA" target="_blank" rel="noopener noreferrer" class="venue-directions">Get directions &rarr;</a>
+    </div>
+
     <div class="travel-grid">
       <div class="travel-card">
         <h3>Closest Airport</h3>
@@ -1131,14 +1201,14 @@
       </div>
       <div class="travel-card">
         <h3>The Final Toast &mdash; Afterparty</h3>
-        <p>The night continues at The Derry Club Speakeasy, located on the Heigh Torr Estate grounds. No travel needed — the party doesn't stop.</p>
+        <p>The night continues at The Derry Club Speakeasy, located on the Heigh Torr Estate grounds.</p>
       </div>
     </div>
 
     <div class="section-header" style="margin-top:56px;margin-bottom:32px;">
       <span class="section-label">Room Blocks</span>
       <h2 style="font-size:clamp(1.4rem,3vw,2rem);">Hotel Accommodations</h2>
-      <p style="font-size:.8rem;color:var(--rose);margin-top:12px;font-style:italic;">Book by September 3, 2026 to guarantee your rate &nbsp;·&nbsp; Arrival Oct 2, Depart Oct 4 recommended</p>
+      <p style="font-size:.8rem;color:var(--rose);margin-top:12px;font-style:italic;">Book by September 2, 2026 to guarantee your rate &nbsp;·&nbsp; Arrival Oct 2, Depart Oct 4 recommended</p>
     </div>
     <div class="hotel-table-wrap">
       <table class="hotel-table">
@@ -1160,7 +1230,7 @@
             </td>
             <td>157 Pimlico Drive<br/>Charles Town, WV 25414</td>
             <td><span class="ht-rate">$179 / night</span></td>
-            <td>Call and ask for the <strong>Brennan-Reyes Wedding</strong> block<br/><em style="font-size:.72rem;color:var(--sage)">Cut-off: Sept 3, 2026</em></td>
+            <td>Call and ask for the <strong>Brennan-Reyes Wedding</strong> block<br/><em style="font-size:.72rem;color:var(--sage)">Cut-off: Sept 2, 2026</em></td>
             <td></td>
           </tr>
           <tr>
@@ -1202,24 +1272,18 @@
   </div>
 </section>
 
-<!-- ── REGISTRY ── -->
-<section id="registry" class="section section-alt">
+<!-- ── GIFTS ── -->
+<section id="gifts" class="section section-alt">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-label">The Wish List</span>
-      <h2>Registry</h2>
+      <span class="section-label">With Gratitude</span>
+      <h2>Gifts</h2>
       <div class="section-rule"></div>
     </div>
     <img src="giftbag.svg" class="section-illustration" alt="" aria-hidden="true" />
-    <div class="registry-grid">
-      <div class="registry-card">
-        <h3>Amazon</h3>
-        <p>Link coming soon</p>
-      </div>
-      <div class="registry-card">
-        <h3>Crate &amp; Barrel</h3>
-        <p>Link coming soon</p>
-      </div>
+    <div class="gift-note">
+      <p>We are incredibly grateful for your love and support. As we&rsquo;ve already built a home together, your presence is truly the greatest gift. If you&rsquo;d like to celebrate with a gift, many have asked for a way to contribute toward our future together.</p>
+      <a class="cta-pill" href="https://www.honeyfund.com/site/brennan-reyes-10-03-2026" target="_blank" rel="noopener noreferrer">Visit our Honeyfund</a>
     </div>
   </div>
 </section>
@@ -1306,7 +1370,7 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" role="region">
-          <div class="faq-answer-inner">A designated card box will be available at the venue for cards and well wishes. For gifts, please consider items from our registry for easy coordination.</div>
+          <div class="faq-answer-inner">A designated card box will be available at the venue for cards and well wishes.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -1351,12 +1415,12 @@
       </div>
       <div class="contact-card">
         <p class="contact-name">Cameron Brennan</p>
-        <p>
-          <a href="tel:7034349467">(703) 434-9467</a><br/>
-          <a href="mailto:cameron.n.brennan@gmail.com">cameron.n.brennan@gmail.com</a>
-        </p>
+        <p><a href="tel:7034349467">(703) 434-9467</a></p>
       </div>
     </div>
+    <p class="contact-shared">
+      Or email us both at <a href="mailto:cpbrennans23@gmail.com">cpbrennans23@gmail.com</a>
+    </p>
   </div>
 </section>
 
@@ -1375,37 +1439,8 @@
 </footer>
 
 <script>
-  /*
-   * GUEST LIST — one entry per household/invitation
-   * Format: 'CODE': 'Name as it should appear in the RSVP form'
-   * Send each guest a link like: https://yoursite.com/?code=CODE
-   * Codes are case-insensitive. Keep codes random (not guessable).
-   *
-   * Example:
-   *   'X7K2M9': 'John & Jane Smith',
-   *   'Q4P8R1': 'Robert Johnson',
-   */
-  const guestList = {
-    // Add guests here
-  };
-
-  function initRSVP() {
-    const params  = new URLSearchParams(window.location.search);
-    const code    = (params.get('code') || '').toUpperCase().trim();
-    const guest   = guestList[code];
-    const form    = document.getElementById('rsvp-form');
-    const locked  = document.getElementById('rsvp-locked');
-    const note    = document.getElementById('rsvp-note');
-
-    if (guest) {
-      document.getElementById('name').value = guest;
-      document.getElementById('invite-code-field').value = code;
-      form.style.display   = 'block';
-      note.style.display   = 'block';
-      locked.style.display = 'none';
-    }
-    // else: locked state stays visible (default)
-  }
+  // The invite-code RSVP stub lived here. Replies now happen at /rsvp, where a
+  // guest finds their household by name. No codes, no personalized links.
 
   // Countdown
   const weddingDate = new Date('2026-10-03T16:30:00');
@@ -1420,8 +1455,6 @@
   }
   tick();
   setInterval(tick, 1000);
-
-  initRSVP();
 
   // Sticky nav
   const nav = document.getElementById('site-nav');
