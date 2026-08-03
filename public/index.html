@@ -21,9 +21,41 @@
       --sage:     #8a9e88;
       --charcoal: #3d3530;
       --warm:     #6b4c3b;
+      --banner-h: 40px;
     }
 
     html { scroll-behavior: smooth; }
+    /* The banner and the nav are both fixed, so anchor jumps have to clear
+       them or every section heading lands underneath. */
+    html { scroll-padding-top: calc(var(--banner-h) + 64px); }
+
+    /* ── RSVP BANNER ── */
+    .rsvp-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 101;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: var(--banner-h);
+      padding: 0 16px;
+      background: var(--rose);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      transition: background .2s ease;
+    }
+    .rsvp-banner:hover { background: var(--dusty); }
+    .rsvp-banner .banner-arrow { transition: transform .2s ease; }
+    .rsvp-banner:hover .banner-arrow { transform: translateX(3px); }
+    @media (max-width: 560px) {
+      .rsvp-banner { font-size: .68rem; letter-spacing: .1em; gap: 7px; }
+    }
 
     body {
       background: var(--cream);
@@ -36,7 +68,7 @@
     /* ── NAV ── */
     .site-nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: var(--banner-h); left: 0; right: 0;
       z-index: 100;
       background: var(--cream);
       transition: background .3s, box-shadow .3s;
@@ -946,6 +978,11 @@
 <body>
 
 <!-- ── NAV ── -->
+<a class="rsvp-banner" href="/rsvp">
+  <span>Kindly reply by September 1</span>
+  <span class="banner-arrow" aria-hidden="true">&rarr;</span>
+</a>
+
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <a class="nav-logo" href="#home">C &amp; P</a>
@@ -1090,13 +1127,13 @@
         <h3>Morning After</h3>
         <p class="day-sub">Sunday &nbsp;·&nbsp; October 4, 2026</p>
         <p class="day-venue">Brennan House</p>
-        <p class="day-location">Chantilly, VA</p>
+        <p class="day-location">Fairfax, VA</p>
         <p class="day-dress">Comfortable Attire</p>
         <div class="timeline">
           <div class="timeline-item">
-            <p class="timeline-time">Morning</p>
+            <p class="timeline-time">10:00 AM</p>
             <p class="timeline-event">Farewell Breakfast</p>
-            <p class="timeline-desc">Details to come</p>
+            <p class="timeline-desc">Come and go until 1:00 PM at the Brennan House</p>
           </div>
         </div>
       </div>
@@ -1139,6 +1176,13 @@
       <p class="venue-name">Heigh Torr Estate</p>
       <p class="venue-address">13656 Harpers Ferry Rd &nbsp;·&nbsp; Purcellville, VA 20132</p>
       <a href="https://maps.google.com/?q=13656+Harpers+Ferry+Rd+Purcellville+VA+20132" target="_blank" rel="noopener noreferrer" class="venue-directions">Get directions &rarr;</a>
+    </div>
+
+    <div class="venue-card">
+      <span class="info-label">Farewell Breakfast</span>
+      <p class="venue-name">Brennan House</p>
+      <p class="venue-address">3503 Treaty Oak Ct &nbsp;·&nbsp; Fairfax, VA</p>
+      <a href="https://maps.google.com/?q=3503+Treaty+Oak+Ct+Fairfax+VA" target="_blank" rel="noopener noreferrer" class="venue-directions">Get directions &rarr;</a>
     </div>
 
     <div class="travel-grid">
