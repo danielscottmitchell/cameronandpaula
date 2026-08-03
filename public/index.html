@@ -724,6 +724,32 @@
       color: var(--warm);
       margin-bottom: 32px;
     }
+    /* The registries sit below the fund and read quieter than it, so the
+       hierarchy the couple asked for survives at a glance. */
+    .gift-registries-intro {
+      font-size: .95rem !important;
+      margin: 36px 0 14px !important;
+      color: var(--sage) !important;
+    }
+    .gift-registries {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .gift-registries a {
+      color: var(--rose);
+      text-decoration: none;
+      font-size: .8rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 8px 4px;
+      border-bottom: 1px solid rgba(201,135,122,.4);
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .gift-registries a:hover { color: var(--dusty); border-color: var(--dusty); }
+    .gift-registries-sep { color: var(--sage); opacity: .6; }
     .btn-outline {
       display: inline-block;
       margin-top: 24px;
@@ -1059,7 +1085,7 @@
     </div>
     <div class="story-body">
       <img src="couple.svg" class="section-illustration" alt="" aria-hidden="true" />
-      <p>Our story is one for the ages, and we can't wait to share it with you. Check back soon for the full tale of how we met, fell in love, and the unforgettable moment we knew forever was the only answer.</p>
+      <p>We&rsquo;re still writing this one. Check back before the wedding for how we met and how we ended up here.</p>
     </div>
   </div>
 </section>
@@ -1193,15 +1219,15 @@
     <div class="travel-grid">
       <div class="travel-card">
         <h3>Closest Airport</h3>
-        <p>Dulles International Airport (IAD) is the closest major airport, approximately 30 miles from the venue. Reagan National (DCA) and BWI are also accessible options.</p>
+        <p>Dulles International Airport (IAD) is the closest major airport, about 30 miles from the venue. Reagan National (DCA) and BWI also work.</p>
       </div>
       <div class="travel-card">
         <h3>Parking</h3>
         <p>Complimentary parking is available at Heigh Torr Estate for all guests. Please plan ahead for a designated driver or rideshare if you intend to enjoy the open bar.</p>
       </div>
       <div class="travel-card">
-        <h3>The Final Toast &mdash; Afterparty</h3>
-        <p>The night continues at The Derry Club Speakeasy, located on the Heigh Torr Estate grounds.</p>
+        <h3>Afterparty</h3>
+        <p>The Final Toast continues at The Derry Club Speakeasy, on the Heigh Torr Estate grounds.</p>
       </div>
     </div>
 
@@ -1282,8 +1308,14 @@
     </div>
     <img src="giftbag.svg" class="section-illustration" alt="" aria-hidden="true" />
     <div class="gift-note">
-      <p>We are incredibly grateful for your love and support. As we&rsquo;ve already built a home together, your presence is truly the greatest gift. If you&rsquo;d like to celebrate with a gift, many have asked for a way to contribute toward our future together.</p>
-      <a class="cta-pill" href="https://www.honeyfund.com/site/brennan-reyes-10-03-2026" target="_blank" rel="noopener noreferrer">Visit our Honeyfund</a>
+      <p>We are incredibly grateful for your love and support. As we&rsquo;ve already built a home together, your presence is truly the greatest gift. If you&rsquo;d like to celebrate with a gift, many have asked for a way to contribute toward our future together. Our honeymoon fund is the best way to do that.</p>
+      <a class="cta-pill" href="https://www.honeyfund.com/site/brennan-reyes-10-03-2026" target="_blank" rel="noopener noreferrer">Visit our Honeymoon Fund</a>
+      <p class="gift-registries-intro">If you&rsquo;d rather pick something out, here are a few things we&rsquo;d appreciate.</p>
+      <div class="gift-registries">
+        <a href="https://www.amazon.com/wedding/guest-view/2TLCXUIE1M0HN" target="_blank" rel="noopener noreferrer">Amazon</a>
+        <span class="gift-registries-sep" aria-hidden="true">&middot;</span>
+        <a href="https://www.crateandbarrel.com/gift-registry/paula-reyes-and-cameron-brennan/r7579133" target="_blank" rel="noopener noreferrer">Crate &amp; Barrel</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1361,7 +1393,7 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" role="region">
-          <div class="faq-answer-inner">We kindly ask that guests refrain from taking photos or videos during the ceremony. We have professional photographers and videographers capturing every moment, and we will gladly share photos afterward. We hope you'll be fully present with us!</div>
+          <div class="faq-answer-inner">We kindly ask that guests put phones and cameras away during the ceremony. We have professional photographers and videographers covering it, and we&rsquo;ll share the photos afterward.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -1379,7 +1411,7 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" role="region">
-          <div class="faq-answer-inner">Yes! Plenty of complimentary parking is available at Heigh Torr Estate. Please plan for a designated driver or rideshare if you plan to enjoy the open bar.</div>
+          <div class="faq-answer-inner">Yes. There is plenty of complimentary parking at Heigh Torr Estate. Please arrange a designated driver or rideshare if you intend to enjoy the open bar.</div>
         </div>
       </div>
     </div>
@@ -1395,7 +1427,7 @@
       <div class="section-rule"></div>
     </div>
     <img src="altar.svg" class="section-illustration" alt="" aria-hidden="true" />
-    <p class="gallery-note">Photos will be added here soon. Wedding photos and video will follow after the celebration.</p>
+    <p class="gallery-note">We&rsquo;ll add photos before the wedding, and the rest once the photographers send them over.</p>
   </div>
 </section>
 
