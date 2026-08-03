@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { EVENTS, PAULA_PHONE, isInvited, type EventKey } from '@/lib/config';
-import { formatPhone, digitsOnly } from '@/lib/normalize';
+import { formatPhone, normalizePhone } from '@/lib/normalize';
 
 type Match = { guest_id: string; household_id: string; display_name: string; household_name: string };
 type Guest = { guest_id: string; first_name: string; last_name: string };
@@ -25,6 +25,7 @@ type Loaded = {
   message: string;
   firstSubmittedAt: string | null;
   closed: boolean;
+  noPhone?: boolean;
 };
 
 const NO_MATCH = `We can't find that name. Try your first name on its own, or text Paula at ${PAULA_PHONE}.`;
@@ -248,6 +249,7 @@ function Form({
   const [dietary, setDietary] = useState(data.dietary);
   const [song, setSong] = useState(data.song);
   const [message, setMessage] = useState(data.message);
+  const [noPhone, setNoPhone] = useState(data.noPhone ?? false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const errorRef = useRef<HTMLDivElement>(null);
@@ -263,12 +265,12 @@ function Form({
     try {
       sessionStorage.setItem(
         draftKey(household.household_id),
-        JSON.stringify({ answers, phone, dietary, song, message }),
+        JSON.stringify({ answers, phone, dietary, song, message, noPhone }),
       );
     } catch {
       /* private mode, nothing to do */
     }
-  }, [answers, phone, dietary, song, message, household.household_id, closed]);
+  }, [answers, phone, dietary, song, message, noPhone, household.household_id, closed]);
 
   const missing = useMemo(() => {
     for (const g of guests) {
@@ -281,8 +283,14 @@ function Form({
     return null;
   }, [answers, guests, events]);
 
-  const phoneOk = digitsOnly(phone).length === 10;
+  // A phone number is asked for, but never allowed to be the reason a household
+  // cannot reply at all. Guests without one opt out and submit anyway.
+  const phoneOk = noPhone || normalizePhone(phone).length === 10;
   const canSubmit = !missing && phoneOk && !sending;
+
+  // Only offer the opt out once the number is the single thing left, so it does
+  // not read as "skip this" to everyone else.
+  const offerOptOut = !missing && !noPhone && normalizePhone(phone).length !== 10;
 
   const hint = missing
     ? single
@@ -308,7 +316,7 @@ function Form({
         body: JSON.stringify({
           household_id: household.household_id,
           guests: guests.map((g) => ({ guest_id: g.guest_id, ...answers[g.guest_id] })),
-          phone,
+          phone: noPhone ? '' : phone,
           dietary_notes: dietary,
           song_request: song,
           message,
@@ -325,7 +333,8 @@ function Form({
       onSubmitted(body.submitted_at, {
         ...data,
         answers,
-        phone,
+        noPhone,
+        phone: noPhone ? '' : phone,
         dietary,
         song,
         message,
@@ -429,13 +438,37 @@ function Form({
           inputMode="tel"
           autoComplete="tel"
           value={phone}
+          disabled={noPhone}
           aria-describedby={phone && !phoneOk ? 'phone-error' : undefined}
           onChange={(e) => setPhone(formatPhone(e.target.value))}
         />
-        {phone && !phoneOk && (
+        {phone && !noPhone && normalizePhone(phone).length !== 10 && (
           <span className="field-error" id="phone-error">
             That needs to be 10 digits.
           </span>
+        )}
+
+        {offerOptOut && (
+          <button
+            type="button"
+            className="text-link"
+            style={{ marginTop: 10, fontSize: '.85rem' }}
+            onClick={() => {
+              setNoPhone(true);
+              setPhone('');
+            }}
+          >
+            I&apos;d rather not share a number
+          </button>
+        )}
+
+        {noPhone && (
+          <p className="help" style={{ marginTop: 10 }}>
+            No number, that&rsquo;s fine.{' '}
+            <button type="button" className="text-link" onClick={() => setNoPhone(false)}>
+              Add one after all
+            </button>
+          </p>
         )}
       </div>
 
