@@ -229,6 +229,19 @@ export async function appendLog(entry: {
   });
 }
 
+/**
+ * The `guest` and `household` link fields exist so the base is readable and so
+ * lookups can pull real names into the response rows.
+ *
+ * Linked fields are written by primary field value with `typecast`, which is
+ * what turns "G-004" into a link to that guest. Airtable would happily create a
+ * new record in the linked table if the value matched nothing, so only ids that
+ * have already been checked against the guest list may reach here. The submit
+ * route validates household membership before calling either of these.
+ *
+ * The text `guest_id` and `household_id` columns stay, because upsert can only
+ * merge on a plain field. They are the key; the links are for reading.
+ */
 export async function upsertResponses(rows: ResponseRow[]) {
   const base = env('AIRTABLE_BASE_ID');
   await inChunks(rows, 10, (chunk) =>
@@ -236,7 +249,14 @@ export async function upsertResponses(rows: ResponseRow[]) {
       method: 'PATCH',
       body: JSON.stringify({
         performUpsert: { fieldsToMergeOn: ['guest_id'] },
-        records: chunk.map((fields) => ({ fields })),
+        typecast: true,
+        records: chunk.map((fields) => ({
+          fields: {
+            ...fields,
+            guest: [fields.guest_id],
+            household: [fields.household_id],
+          },
+        })),
       }),
     }),
   );
@@ -247,7 +267,8 @@ export async function upsertSubmission(row: SubmissionRow) {
     method: 'PATCH',
     body: JSON.stringify({
       performUpsert: { fieldsToMergeOn: ['household_id'] },
-      records: [{ fields: row }],
+      typecast: true,
+      records: [{ fields: { ...row, household: [row.household_id] } }],
     }),
   });
 }
