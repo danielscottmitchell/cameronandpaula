@@ -292,7 +292,7 @@
 
     /* ── OUR STORY ── */
     .story-body {
-      max-width: 600px;
+      max-width: 640px;
       margin: 0 auto;
       text-align: center;
     }
@@ -311,12 +311,26 @@
       text-transform: uppercase;
       opacity: .5;
     }
+    /* Long form now, so the paragraphs are left aligned and spaced. Centred
+       italic reads well for one line and badly for nine. */
     .story-body p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      font-size: clamp(1.02rem, 2.4vw, 1.18rem);
       font-style: italic;
-      line-height: 1.85;
+      line-height: 1.9;
       color: var(--warm);
+      text-align: left;
+      margin-bottom: 1.15em;
+    }
+    .story-body p:last-child { margin-bottom: 0; }
+    /* The closing line is the couple's own punchline. Let it sit apart. */
+    .story-close {
+      text-align: center !important;
+      margin-top: 32px !important;
+      color: var(--rose) !important;
+    }
+    @media (max-width: 480px) {
+      .story-body p { font-size: 1rem; line-height: 1.85; }
     }
 
     /* ── DETAILS ── */
@@ -1084,7 +1098,18 @@
     </div>
     <div class="story-body">
       <img src="couple.svg" class="section-illustration" alt="" aria-hidden="true" />
-      <p>We&rsquo;re still writing this one. Check back before the wedding for how we met and how we ended up here.</p>
+      <p>Some love stories begin with a first date. Ours began with a simple hello.</p>
+      <p>We met in 2021 through Paula&rsquo;s sister and her boyfriend, Burgess. Cameron was Burgess&rsquo;s best friend, so whenever Paula came to visit, he was often there too. We traded polite smiles, quiet glances, and friendly greetings. There was an undeniable attraction, and there was also a boundary we both respected. He was her sister&rsquo;s boyfriend&rsquo;s best friend, and that felt like reason enough to leave things exactly where they were.</p>
+      <p>Over the years our paths kept crossing. We helped Paula&rsquo;s sister and Burgess move, we showed up to the same gatherings, and we stayed respectful friends. During that move, Cameron mentioned that he thought Paula was beautiful. Burgess told him, &ldquo;You&rsquo;re not her type.&rdquo; Looking back, it&rsquo;s funny how little any of us knew about what was quietly unfolding.</p>
+      <p>Everything began to shift when Paula&rsquo;s sister and Burgess got engaged. At their engagement celebration, we spent most of the evening dancing together. For the first time, we each started seeing the other differently.</p>
+      <p>Not long after, the couple asked us to go wine tasting to help choose wines for their wedding. Cameron picked Paula up that evening, and what was supposed to be a simple errand became one of the most memorable nights of our story. Instead of texting that he had arrived, he came to the door. He opened every door for her the rest of the night. His kindness and thoughtfulness stood out in a way she had never noticed before. As we talked, we found how much we shared. Our faith, our values, our love of family, and the way we saw life. We got so caught up in each other&rsquo;s company that we forgot the wine entirely and had to come back the next day to pick it up.</p>
+      <p>By the time the wedding arrived, we spent every chance we got together. Everyone noticed. One of Paula&rsquo;s mother&rsquo;s friends said, &ldquo;It looks like there will be another wedding soon.&rdquo; Neither of us knew how right she would be.</p>
+      <p>Life had its own timing. Our feelings were growing, but Cameron was walking through a difficult season, and we both knew it wasn&rsquo;t the right moment for our story to begin. We stepped back and trusted that if it was meant to be, it would find its way.</p>
+      <p>And it did.</p>
+      <p>A series of unexpected circumstances brought us back into each other&rsquo;s lives, and Paula invited Cameron to church. This time everything was different. He pursued her with intention, and from the very beginning there was a peace unlike anything either of us had known. We both knew where this was headed.</p>
+      <p>From that moment on, our love grew quickly and naturally. We became best friends, partners, and each other&rsquo;s greatest supporters. We cherish time with our families, we encourage one another in every season, and we find joy in the ordinary moments as much as the extraordinary ones.</p>
+      <p>What began with a simple hello became the greatest love story of our lives. Now, as we prepare to say &ldquo;I do&rdquo; in 2026, we are grateful for every moment, every delay, and every turn in the journey that led us to each other.</p>
+      <p class="story-close">The timing may not have been ours, but it was perfect.</p>
     </div>
   </div>
 </section>
@@ -1163,7 +1188,11 @@
           <div class="timeline-item">
             <p class="timeline-time">10:00 AM</p>
             <p class="timeline-event">Farewell Breakfast</p>
-            <p class="timeline-desc">Come and go until 1:00 PM at the Brennan House</p>
+            <p class="timeline-desc">The Brennan House</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-time">1:00 PM</p>
+            <p class="timeline-event">Breakfast Concludes</p>
           </div>
         </div>
       </div>
