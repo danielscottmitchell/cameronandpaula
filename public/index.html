@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme-burgundy">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1017,6 +1017,49 @@
       .hero-venue { letter-spacing: .1em; font-size: .6rem; }
       .corner { width: clamp(140px, 48vw, 200px); }
     }
+
+    /* ── BURGUNDY THEME, PREVIEW ─────────────────────────────────────────
+       Scoped to .theme-burgundy on <html>. Overrides the tokens, then
+       patches the handful of rules where a token is used as a foreground
+       on a coloured background and so cannot simply flip.
+
+       Contrast against #730d12, measured not guessed:
+         cream text   11.10:1   (today's charcoal on cream is 11.38:1)
+         rose accent   6.37:1   (was 4.03:1 at the old #c9877a)
+         sage accent   6.71:1   (was 4.08:1)
+         warm body     high     (the old #6b4c3b was 1.52:1, unreadable)
+
+       If this direction is chosen, the right fix is to split the tokens
+       into --paper / --ink semantics rather than keep this block. */
+    .theme-burgundy {
+      --cream:    #730d12;
+      --blush:    #5e0a0f;
+      --rose:     #e8b3a6;
+      --dusty:    #f0cabf;
+      --sage:     #b8c9b4;
+      --charcoal: #fdf8f5;
+      --warm:     #f2ddd8;
+      --wine:     #e8b3a6;
+    }
+    /* Pills and the banner use a light accent as their background, so their
+       text has to go dark rather than inherit the new light --cream. */
+    .theme-burgundy .cta-pill { color: #730d12 !important; }
+    .theme-burgundy .cta-pill:hover { color: #f2ddd8 !important; background: transparent; }
+    .theme-burgundy .rsvp-banner { color: #730d12; }
+    .theme-burgundy .rsvp-banner:hover { background: #f2ddd8; }
+    .theme-burgundy .btn-outline:hover { background: var(--rose); color: #730d12; }
+    /* Nav sits on the page surface, not on paper. */
+    .theme-burgundy .site-nav { background: #730d12; }
+    .theme-burgundy .site-nav.scrolled { background: rgba(115,13,18,.96); }
+    .theme-burgundy .nav-links { background: rgba(115,13,18,.98); }
+    /* Hairlines were a dark rose on cream; they need to lighten to show. */
+    .theme-burgundy .venue-card,
+    .theme-burgundy .gift-note,
+    .theme-burgundy .contact-card,
+    .theme-burgundy .travel-card,
+    .theme-burgundy .faq-item,
+    .theme-burgundy .rsvp-locked { border-color: rgba(232,179,166,.28); }
+    .theme-burgundy .section-rule { background: rgba(232,179,166,.5); }
   </style>
 </head>
 <body>
