@@ -1,10 +1,10 @@
-# cameronandpaula.com — reference
+# cameronandpaula.com reference
 
 Wedding: **October 2–4, 2026**, Heigh Torr Estate, Purcellville VA
 RSVP deadline: **September 1, 2026**
 
 **Task status lives in Airtable, not here:** base `appyOfrHKJ7wmerSm`,
-"Cameron & Paula — Build Plan". This file holds only what belongs next to the
+"Cameron & Paula Build Plan". This file holds only what belongs next to the
 code: where things are, and what has already bitten us.
 
 Two trackers drift. If you find yourself updating a checklist in this file,
@@ -19,8 +19,8 @@ it belongs in Airtable instead.
 | Site | https://cameronandpaula.com |
 | Repo | https://github.com/danielscottmitchell/cameronandpaula |
 | Plan | Airtable `appyOfrHKJ7wmerSm` |
-| RSVP data | Airtable `appWQtDIA6fDlqAqc` — households, guests, responses, submissions |
-| RSVP log | Airtable `appAJVfltA4hFum0I` — append only, never edit |
+| RSVP data | Airtable `appWQtDIA6fDlqAqc`, tables: households, guests, responses, submissions |
+| RSVP log | Airtable `appAJVfltA4hFum0I`, append only, never edit |
 | Env vars | `AIRTABLE_PAT`, `AIRTABLE_BASE_ID`, `AIRTABLE_LOG_BASE_ID` |
 
 Architecture: the wedding site is hand-written static HTML in `public/`, with

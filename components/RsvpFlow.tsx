@@ -323,7 +323,7 @@ function Form({
         }),
       });
       const body = await res.json();
-      if (!res.ok) throw new Error(body.message ?? 'That did not save. Please try again.');
+      if (!res.ok) throw new Error(body.message ?? 'That didn\u2019t save. Please try again.');
 
       try {
         sessionStorage.removeItem(draftKey(household.household_id));
@@ -341,7 +341,7 @@ function Form({
         firstSubmittedAt: data.firstSubmittedAt ?? body.submitted_at,
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'That did not save. Please try again.');
+      setError(err instanceof Error ? err.message : 'That didn\u2019t save. Please try again.');
       setSending(false);
       requestAnimationFrame(() => errorRef.current?.focus());
     }
@@ -603,7 +603,7 @@ function ReadOnly({
       {dietary && <p className="confirm-line">Dietary: {dietary}</p>}
       {song && <p className="confirm-line">Song: {song}</p>}
       <p className="confirm-line" style={{ marginTop: 12 }}>
-        Anything to change, text Paula at {PAULA_PHONE}.{' '}
+        If anything needs changing, text Paula at {PAULA_PHONE}.{' '}
         <button type="button" className="text-link" onClick={onBack}>
           Look up a different name
         </button>
