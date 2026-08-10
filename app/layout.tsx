@@ -44,7 +44,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
+    <html lang="en" className={`theme-burgundy ${cormorant.variable} ${jost.variable}`}>
       <body>
         {/* Next only renders /rsvp. The wedding site's own nav lives in the
             static page, so this is just the way back to it. */}

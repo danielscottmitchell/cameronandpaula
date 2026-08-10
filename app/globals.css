@@ -382,3 +382,47 @@ textarea { resize: vertical; line-height: 1.5; }
   .corner { opacity: .55 !important; }
   .floral-bottom { opacity: .6 !important; }
 }
+
+/* ── BURGUNDY THEME, PREVIEW ────────────────────────────────────────────
+   Mirrors the block in public/index.html so /rsvp does not sit in cream
+   next to a burgundy site. Same measured contrasts: cream text 11.10:1,
+   rose 6.37:1, sage 6.71:1 against #730d12. */
+.theme-burgundy {
+  --blush:    #5e0a0f;
+  --rose:     #e8b3a6;
+  --dusty:    #f0cabf;
+  --sage:     #d9b382;
+  --cream:    #730d12;
+  --charcoal: #fdf8f5;
+  --ink:      #f2ddd8;
+}
+.theme-burgundy body {
+  background:
+    radial-gradient(120% 80% at 50% -15%, rgba(232,179,166,.10), transparent 55%),
+    radial-gradient(120% 70% at 50% 115%, rgba(217,179,130,.08), transparent 55%),
+    #730d12;
+}
+/* These sit on a light accent, so their text goes dark rather than
+   inheriting the now-light --cream. */
+.theme-burgundy ::selection { background: var(--rose); color: #730d12; }
+.theme-burgundy .rsvp-button:hover { background: var(--rose); color: #730d12; }
+.theme-burgundy .segmented button[aria-pressed="true"] { color: #730d12; }
+.theme-burgundy .segmented button[aria-pressed="true"].no { color: #730d12; }
+.theme-burgundy .submit { color: #730d12; }
+.theme-burgundy .submit:disabled { color: var(--sage); }
+/* Inputs were white-ish paper on cream; on burgundy they need to be
+   darker than the page or they glare. */
+.theme-burgundy input[type="text"],
+.theme-burgundy input[type="tel"],
+.theme-burgundy textarea {
+  background: rgba(0,0,0,.18);
+  border-color: rgba(232,179,166,.35);
+  color: var(--ink);
+}
+.theme-burgundy .guest-block { background: rgba(0,0,0,.14); border-color: rgba(232,179,166,.26); }
+.theme-burgundy .suggestions { background: #5e0a0f; border-color: rgba(232,179,166,.3); }
+.theme-burgundy .suggestions button { color: var(--ink); }
+.theme-burgundy .suggestions button:hover,
+.theme-burgundy .suggestions button[data-active="true"] { background: rgba(232,179,166,.16); }
+.theme-burgundy .confirm-card { background: rgba(0,0,0,.14); border-color: rgba(232,179,166,.28); }
+.theme-burgundy .event-row { border-top-color: rgba(232,179,166,.18); }
