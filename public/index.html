@@ -168,7 +168,10 @@
       height: auto;
       pointer-events: none;
     }
-    .corner-tl { top: 64px; left: 0; }
+    /* Clears both fixed bars. The 64px was the nav alone; the banner sits
+       above it now, and the nav's solid background was cropping the top of
+       the floral. */
+    .corner-tl { top: calc(var(--banner-h) + 64px); left: 0; }
     .corner-br { bottom: 0; right: 0; }
     @media (max-width: 480px) { .corner { width: clamp(180px, 55vw, 260px); } }
 
