@@ -1059,6 +1059,72 @@
       transition: color .2s ease, border-color .2s ease;
     }
     .story-toggle:hover { color: var(--dusty); border-color: var(--dusty); }
+
+    /* ── GALLERY GRID + LIGHTBOX ── */
+    .gallery-item {
+      padding: 0;
+      border: 1px solid rgba(201,135,122,.14);
+      background: rgba(201,135,122,.06);
+      cursor: pointer;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .45s ease, opacity .3s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(35,12,16,.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 16px;
+    }
+    .lightbox[hidden] { display: none; }
+    .lb-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      box-shadow: 0 10px 50px rgba(0,0,0,.5);
+    }
+    .lightbox button {
+      position: absolute;
+      background: rgba(253,248,245,.10);
+      border: 1px solid rgba(253,248,245,.28);
+      color: #fdf8f5;
+      cursor: pointer;
+      /* 44px minimum, these are the only controls in the viewer. */
+      width: 48px; height: 48px;
+      font-size: 1.6rem;
+      line-height: 1;
+      border-radius: 50%;
+      transition: background .2s ease;
+    }
+    .lightbox button:hover { background: rgba(253,248,245,.24); }
+    .lb-close { top: 16px; right: 16px; }
+    .lb-prev  { left: 16px;  top: 50%; transform: translateY(-50%); }
+    .lb-next  { right: 16px; top: 50%; transform: translateY(-50%); }
+    .lb-count {
+      position: absolute;
+      bottom: 18px; left: 0; right: 0;
+      text-align: center;
+      color: rgba(253,248,245,.75);
+      font-size: .72rem;
+      letter-spacing: .18em;
+    }
+    @media (max-width: 560px) {
+      .lb-prev { left: 8px; }
+      .lb-next { right: 8px; }
+      .lightbox { padding: 64px 8px 48px; }
+    }
   </style>
 </head>
 <body>
@@ -1514,7 +1580,77 @@
       <div class="section-rule"></div>
     </div>
     <img src="altar.svg" class="section-illustration" alt="" aria-hidden="true" />
-    <p class="gallery-note">We&rsquo;ll add photos before the wedding, and the rest once the photographers send them over.</p>
+      <div class="gallery-grid">
+        <button class="gallery-item" type="button" data-full="gallery/01.webp" aria-label="Open photo 1 of 23">
+          <img src="gallery/01-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/02.webp" aria-label="Open photo 2 of 23">
+          <img src="gallery/02-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/03.webp" aria-label="Open photo 3 of 23">
+          <img src="gallery/03-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/04.webp" aria-label="Open photo 4 of 23">
+          <img src="gallery/04-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/05.webp" aria-label="Open photo 5 of 23">
+          <img src="gallery/05-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/06.webp" aria-label="Open photo 6 of 23">
+          <img src="gallery/06-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/07.webp" aria-label="Open photo 7 of 23">
+          <img src="gallery/07-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/08.webp" aria-label="Open photo 8 of 23">
+          <img src="gallery/08-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/09.webp" aria-label="Open photo 9 of 23">
+          <img src="gallery/09-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/10.webp" aria-label="Open photo 10 of 23">
+          <img src="gallery/10-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/11.webp" aria-label="Open photo 11 of 23">
+          <img src="gallery/11-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/12.webp" aria-label="Open photo 12 of 23">
+          <img src="gallery/12-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/13.webp" aria-label="Open photo 13 of 23">
+          <img src="gallery/13-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/14.webp" aria-label="Open photo 14 of 23">
+          <img src="gallery/14-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/15.webp" aria-label="Open photo 15 of 23">
+          <img src="gallery/15-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/16.webp" aria-label="Open photo 16 of 23">
+          <img src="gallery/16-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/17.webp" aria-label="Open photo 17 of 23">
+          <img src="gallery/17-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/18.webp" aria-label="Open photo 18 of 23">
+          <img src="gallery/18-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/19.webp" aria-label="Open photo 19 of 23">
+          <img src="gallery/19-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/20.webp" aria-label="Open photo 20 of 23">
+          <img src="gallery/20-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/21.webp" aria-label="Open photo 21 of 23">
+          <img src="gallery/21-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/22.webp" aria-label="Open photo 22 of 23">
+          <img src="gallery/22-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+        <button class="gallery-item" type="button" data-full="gallery/23.webp" aria-label="Open photo 23 of 23">
+          <img src="gallery/23-t.webp" width="700" height="933" loading="lazy" decoding="async" alt="" />
+        </button>
+      </div>
   </div>
 </section>
 
@@ -1556,6 +1692,14 @@
   <p class="footer-names">Cameron &amp; Paula</p>
   <p>October 2&ndash;4, 2026 &nbsp;·&nbsp; Heigh Torr Estate &nbsp;·&nbsp; Purcellville, Virginia</p>
 </footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <button class="lb-close" type="button" aria-label="Close photo viewer">&times;</button>
+  <button class="lb-prev" type="button" aria-label="Previous photo">&#8249;</button>
+  <img class="lb-img" id="lb-img" alt="" />
+  <button class="lb-next" type="button" aria-label="Next photo">&#8250;</button>
+  <p class="lb-count" id="lb-count"></p>
+</div>
 
 <script>
   // The invite-code RSVP stub lived here. Replies now happen at /rsvp, where a
@@ -1621,6 +1765,59 @@
       if (!open) storyToggle.scrollIntoView({ block: 'center', behavior: 'smooth' });
     });
   }
+
+  // Gallery lightbox. Thumbnails are cropped 3:4; the viewer shows the whole
+  // frame, so portrait and landscape both read correctly.
+  (function () {
+    const box   = document.getElementById('lightbox');
+    if (!box) return;
+    const img   = document.getElementById('lb-img');
+    const count = document.getElementById('lb-count');
+    const items = [...document.querySelectorAll('.gallery-item')];
+    let i = 0, lastFocus = null;
+
+    function show(n) {
+      i = (n + items.length) % items.length;
+      img.src = items[i].dataset.full;
+      img.alt = 'Photo ' + (i + 1) + ' of ' + items.length;
+      count.textContent = (i + 1) + ' / ' + items.length;
+    }
+    function open(n) {
+      lastFocus = document.activeElement;
+      show(n);
+      box.hidden = false;
+      document.body.style.overflow = 'hidden';
+      box.querySelector('.lb-close').focus();
+    }
+    function close() {
+      box.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    items.forEach((el, n) => el.addEventListener('click', () => open(n)));
+    box.querySelector('.lb-close').addEventListener('click', close);
+    box.querySelector('.lb-prev').addEventListener('click', () => show(i - 1));
+    box.querySelector('.lb-next').addEventListener('click', () => show(i + 1));
+    box.addEventListener('click', (e) => { if (e.target === box) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (box.hidden) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(i - 1);
+      if (e.key === 'ArrowRight') show(i + 1);
+    });
+
+    // Swipe on touch.
+    let x0 = null;
+    box.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) show(dx > 0 ? i - 1 : i + 1);
+      x0 = null;
+    }, { passive: true });
+  })();
 </script>
+
 </body>
 </html>
