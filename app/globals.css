@@ -426,3 +426,30 @@ textarea { resize: vertical; line-height: 1.5; }
 .theme-burgundy .suggestions button[data-active="true"] { background: rgba(232,179,166,.16); }
 .theme-burgundy .confirm-card { background: rgba(0,0,0,.14); border-color: rgba(232,179,166,.28); }
 .theme-burgundy .event-row { border-top-color: rgba(232,179,166,.18); }
+
+/* These three keep hardcoded near-white surfaces from the cream design, so
+   when the tokens flipped light the text went light on light. The surfaces
+   have to darken, not just the ink. */
+.theme-burgundy .rsvp-button {
+  background: rgba(67,7,9,.86);
+  border-color: rgba(232,179,166,.45);
+  color: #fdf8f5;
+}
+.theme-burgundy .rsvp-button:hover { background: var(--rose); color: #730d12; }
+
+.theme-burgundy .segmented button {
+  background: rgba(0,0,0,.22);
+  border-color: rgba(232,179,166,.4);
+  color: #fdf8f5;
+}
+.theme-burgundy .segmented button:hover { background: rgba(232,179,166,.18); }
+.theme-burgundy .segmented button[aria-pressed="true"] {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #730d12;
+}
+.theme-burgundy .segmented button[aria-pressed="true"].no {
+  background: #d9b382;
+  border-color: #d9b382;
+  color: #730d12;
+}
