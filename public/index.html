@@ -51,8 +51,14 @@
       transition: background .2s ease;
     }
     .rsvp-banner:hover { background: var(--dusty); }
-    .rsvp-banner .banner-arrow { transition: transform .2s ease; }
-    .rsvp-banner:hover .banner-arrow { transform: translateX(3px); }
+    .rsvp-banner .banner-arrow { animation: nudge 1.9s ease-in-out infinite; }
+    @keyframes nudge {
+      0%, 100% { transform: translateX(0); }
+      50%      { transform: translateX(5px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .rsvp-banner .banner-arrow { animation: none; }
+    }
     @media (max-width: 560px) {
       .rsvp-banner { font-size: .68rem; letter-spacing: .1em; gap: 7px; }
     }
@@ -850,7 +856,8 @@
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
     .faq-answer-inner { padding: 0 0 24px; font-size: .84rem; line-height: 1.85; color: var(--warm); }
     .faq-answer-inner a { color: var(--rose); text-decoration: underline; text-underline-offset: 3px; }
-    .faq-item.open .faq-answer { max-height: 300px; }
+    /* The attire answer runs to four short paragraphs; 300px clipped it. */
+    .faq-item.open .faq-answer { max-height: 760px; }
 
     /* ── GALLERY ── */
     .gallery-grid {
@@ -1017,6 +1024,28 @@
       .hero-venue { letter-spacing: .1em; font-size: .6rem; }
       .corner { width: clamp(140px, 48vw, 200px); }
     }
+
+    /* The story runs to twelve paragraphs. Opening on two keeps the section
+       scannable; the rest expands in place rather than in a modal, so the
+       text stays in the document for search and for screen readers. */
+    .story-more { max-height: 0; overflow: hidden; transition: max-height .5s ease; }
+    .story-more.open { max-height: 4000px; }
+    .story-toggle {
+      display: block;
+      margin: 8px auto 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid rgba(201,135,122,.5);
+      padding: 6px 2px;
+      cursor: pointer;
+      font-family: 'Jost', sans-serif;
+      font-size: .74rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .story-toggle:hover { color: var(--dusty); border-color: var(--dusty); }
   </style>
 </head>
 <body>
@@ -1100,16 +1129,19 @@
       <img src="couple.svg" class="section-illustration" alt="" aria-hidden="true" />
       <p>Some love stories begin with a first date. Ours began with a simple hello.</p>
       <p>We met in 2021 through Paula&rsquo;s sister Stefany and her boyfriend, Burgess. Cameron was Burgess&rsquo;s best friend, so whenever Paula came to visit, he was often there too. We traded polite smiles, quiet glances, and friendly greetings. There was an undeniable attraction, and there was also a boundary we both respected. He was her sister&rsquo;s boyfriend&rsquo;s best friend, and that felt like reason enough to leave things exactly where they were.</p>
-      <p>Over the years our paths kept crossing. We helped Stefany and Burgess move, we showed up to the same gatherings, and we stayed respectful friends. During that move, Cameron mentioned that he thought Paula was beautiful. Burgess told him, &ldquo;You&rsquo;re not her type.&rdquo; Looking back, it&rsquo;s funny how little any of us knew about what was quietly unfolding.</p>
-      <p>Everything began to shift when Stefany and Burgess got engaged. At their engagement celebration, we spent most of the evening dancing together. For the first time, we each started seeing the other differently.</p>
-      <p>Not long after, the couple asked us to go wine tasting to help choose wines for their wedding. Cameron picked Paula up that evening, and what was supposed to be a simple errand became one of the most memorable nights of our story. Instead of texting that he had arrived, he came to the door. He opened every door for her the rest of the night. His kindness and thoughtfulness stood out in a way she had never noticed before. As we talked, we found how much we shared. Our faith, our values, our love of family, and the way we saw life. We got so caught up in each other&rsquo;s company that we forgot the wine entirely and had to come back the next day to pick it up.</p>
-      <p>By the time the wedding arrived, we spent every chance we got together. Everyone noticed. One of Paula&rsquo;s mother&rsquo;s friends said, &ldquo;It looks like there will be another wedding soon.&rdquo; Neither of us knew how right she would be.</p>
-      <p>Life had its own timing. Our feelings were growing, but Cameron was walking through a difficult season, and we both knew it wasn&rsquo;t the right moment for our story to begin. We stepped back and trusted that if it was meant to be, it would find its way.</p>
-      <p>And it did.</p>
-      <p>A series of unexpected circumstances brought us back into each other&rsquo;s lives, and Paula invited Cameron to church. This time everything was different. He pursued her with intention, and from the very beginning there was a peace unlike anything either of us had known. We both knew where this was headed.</p>
-      <p>From that moment on, our love grew quickly and naturally. We became best friends, partners, and each other&rsquo;s greatest supporters. We cherish time with our families, we encourage one another in every season, and we find joy in the ordinary moments as much as the extraordinary ones.</p>
-      <p>What began with a simple hello became the greatest love story of our lives. Now, as we prepare to say &ldquo;I do&rdquo; in 2026, we are grateful for every moment, every delay, and every turn in the journey that led us to each other.</p>
-      <p class="story-close">The timing may not have been ours, but it was perfect.</p>
+      <div class="story-more" id="story-more">
+        <p>Over the years our paths kept crossing. We helped Stefany and Burgess move, we showed up to the same gatherings, and we stayed respectful friends. During that move, Cameron mentioned that he thought Paula was beautiful. Burgess told him, &ldquo;You&rsquo;re not her type.&rdquo; Looking back, it&rsquo;s funny how little any of us knew about what was quietly unfolding.</p>
+        <p>Everything began to shift when Stefany and Burgess got engaged. At their engagement celebration, we spent most of the evening dancing together. For the first time, we each started seeing the other differently.</p>
+        <p>Not long after, the couple asked us to go wine tasting to help choose wines for their wedding. Cameron picked Paula up that evening, and what was supposed to be a simple errand became one of the most memorable nights of our story. Instead of texting that he had arrived, he came to the door. He opened every door for her the rest of the night. His kindness and thoughtfulness stood out in a way she had never noticed before. As we talked, we found how much we shared. Our faith, our values, our love of family, and the way we saw life. We got so caught up in each other&rsquo;s company that we forgot the wine entirely and had to come back the next day to pick it up.</p>
+        <p>By the time the wedding arrived, we spent every chance we got together. Everyone noticed. One of Paula&rsquo;s mother&rsquo;s friends said, &ldquo;It looks like there will be another wedding soon.&rdquo; Neither of us knew how right she would be.</p>
+        <p>Life had its own timing. Our feelings were growing, but Cameron was walking through a difficult season, and we both knew it wasn&rsquo;t the right moment for our story to begin. We stepped back and trusted that if it was meant to be, it would find its way.</p>
+        <p>And it did.</p>
+        <p>A series of unexpected circumstances brought us back into each other&rsquo;s lives, and Paula invited Cameron to church. This time everything was different. He pursued her with intention, and from the very beginning there was a peace unlike anything either of us had known. We both knew where this was headed.</p>
+        <p>From that moment on, our love grew quickly and naturally. We became best friends, partners, and each other&rsquo;s greatest supporters. We cherish time with our families, we encourage one another in every season, and we find joy in the ordinary moments as much as the extraordinary ones.</p>
+        <p>What began with a simple hello became the greatest love story of our lives. Now, as we prepare to say &ldquo;I do&rdquo; in 2026, we are grateful for every moment, every delay, and every turn in the journey that led us to each other.</p>
+        <p class="story-close">The timing may not have been ours, but it was perfect.</p>
+      </div>
+      <button class="story-toggle" type="button" aria-expanded="false" aria-controls="story-more">Read the rest</button>
     </div>
   </div>
 </section>
@@ -1403,7 +1435,12 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer" role="region">
-          <div class="faq-answer-inner">Western attire for Friday&rsquo;s welcome party, formal attire for Saturday&rsquo;s wedding, and something comfortable for Sunday breakfast. The ceremony and cocktail hour are on the grounds, so expect grass underfoot, and October evenings in Virginia get cool after dark.</div>
+          <div class="faq-answer-inner">
+            <strong>Friday, Welcome Party &mdash; western attire.</strong> Boots, denim, a hat if you have one. Nothing formal; this is a fun and relaxed night.<br/><br/>
+            <strong>Saturday, Wedding Day &mdash; formal attire.</strong> Suits and ties, floor length or midi dresses. The ceremony and cocktail hour are outdoors on grass, so block heels or wedges will serve you far better than stilettos. October evenings in Virginia drop into the fifties after dark, and much of the night is outside, so bring a wrap or a jacket.<br/><br/>
+            <strong>Sunday, Farewell Breakfast &mdash; comfortable.</strong> Come as you are. Travel clothes are perfectly welcome.<br/><br/>
+            We have no colour palette to match and no restrictions beyond the usual: please leave white, ivory and cream to the bride.
+          </div>
         </div>
       </div>
       <div class="faq-item">
@@ -1558,6 +1595,19 @@
       }
     });
   });
+
+  // Our Story expands in place. Every paragraph stays in the DOM, so the
+  // story is findable and readable even if this script never runs.
+  const storyToggle = document.querySelector('.story-toggle');
+  if (storyToggle) {
+    const more = document.getElementById('story-more');
+    storyToggle.addEventListener('click', () => {
+      const open = more.classList.toggle('open');
+      storyToggle.setAttribute('aria-expanded', String(open));
+      storyToggle.textContent = open ? 'Show less' : 'Read the rest';
+      if (!open) storyToggle.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    });
+  }
 </script>
 </body>
 </html>
