@@ -40,7 +40,10 @@
       gap: 10px;
       height: var(--banner-h);
       padding: 0 16px;
-      background: var(--rose);
+      /* --wine, not --rose. Cream on rose measured 2.76:1, which fails
+         WCAG for small text; this is 7.05:1 and reads as its own band
+         rather than blending into the rose accents below it. */
+      background: var(--wine);
       color: var(--cream);
       font-family: 'Jost', sans-serif;
       font-size: .78rem;
@@ -50,7 +53,7 @@
       text-align: center;
       transition: background .2s ease;
     }
-    .rsvp-banner:hover { background: var(--dusty); }
+    .rsvp-banner:hover { background: #6f2a41; }
     .rsvp-banner .banner-arrow { animation: nudge 1.9s ease-in-out infinite; }
     @keyframes nudge {
       0%, 100% { transform: translateX(0); }
