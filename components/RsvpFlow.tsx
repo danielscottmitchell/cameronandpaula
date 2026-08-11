@@ -553,8 +553,10 @@ function Confirmation({
 
   return (
     <div className="confirm-card" role="status">
-      <h3>Thank you, we have it.</h3>
-      <p className="confirm-line">Recorded {when}.</p>
+      {/* Has to work for a household that accepted and one that declined
+          everything, so it thanks them for replying rather than for coming. */}
+      <h3>Thank you for letting us know.</h3>
+      <p className="confirm-line">Your reply was saved on {when}.</p>
       {summaryLines(data.guests, data.answers, data.household).map((l) => (
         <p className="confirm-line" key={l.name}>
           <strong>{l.name}</strong> · {l.text}
