@@ -383,7 +383,7 @@ textarea { resize: vertical; line-height: 1.5; }
   .floral-bottom { opacity: .6 !important; }
 }
 
-/* ── BURGUNDY THEME, PREVIEW ────────────────────────────────────────────
+/* ── BURGUNDY THEME ─────────────────────────────────────────────────────
    Mirrors the block in public/index.html so /rsvp does not sit in cream
    next to a burgundy site. Same measured contrasts: cream text 11.10:1,
    rose 6.37:1, sage 6.71:1 against #730d12. */

@@ -1125,10 +1125,19 @@
       .lb-next { right: 8px; }
       .lightbox { padding: 64px 8px 48px; }
     }
-    /* ── BURGUNDY THEME, PREVIEW ─────────────────────────────────────────
+    /* ── BURGUNDY THEME ──────────────────────────────────────────────────
        Scoped to .theme-burgundy on <html>. Overrides the tokens, then
-       patches the handful of rules where a token is used as a foreground
-       on a coloured background and so cannot simply flip.
+       patches the rules where a token is used as a foreground on a coloured
+       background and so cannot simply flip.
+
+       Kept as an override block rather than folded into :root so the cream
+       palette survives intact underneath it.
+
+       To roll back, two steps, not one: remove theme-burgundy from <html>
+       AND swap the illustration sources from *-light.svg back to *.svg. The
+       light variants are #f2ddd8 line art and vanish on cream, so the class
+       alone is not enough. The dark originals are kept in public/ for
+       exactly this reason; they are unreferenced but not dead.
 
        Contrast against #730d12, measured not guessed:
          cream text   11.10:1   (today's charcoal on cream is 11.38:1)
@@ -1136,8 +1145,9 @@
          sage accent   6.71:1   (was 4.08:1)
          warm body     high     (the old #6b4c3b was 1.52:1, unreadable)
 
-       If this direction is chosen, the right fix is to split the tokens
-       into --paper / --ink semantics rather than keep this block. */
+       The tokens are still named for the cream palette (--cream is now a
+       burgundy). Renaming them to --paper / --ink would read better and is
+       worth doing if this file is ever touched at length. */
     .theme-burgundy {
       --cream:    #730d12;
       --blush:    #5e0a0f;
