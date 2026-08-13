@@ -34,6 +34,17 @@ a Next.js rewrite pointing `/` at it. Next owns `/rsvp` and `/api` only.
   `data/guest-list.txt`. Reordering that file reassigns ids and orphans
   replies. Append new households at the end.
 
+- **Do not re-run `scripts/import-guests.mjs` against the live base.** Nine
+  guests now have aliases edited by hand in Airtable that the script does not
+  know about (Lucas goes by Loon, Gabrielle by Gaby, Patrick by Stella, and so
+  on). The script would overwrite all of them with its own guesses. Add people
+  straight to Airtable instead, continuing the id sequence.
+
+- **Adding a guest to an existing household cannot go through the text file
+  either.** Guest ids are sequential across the whole file, so inserting a
+  person mid-file renumbers everyone after them. Appending a whole new
+  household at the end is the only safe edit.
+
 - **`data/guest-list.txt` is gitignored.** It holds home addresses. It lives
   locally and in Airtable, never in git history.
 
