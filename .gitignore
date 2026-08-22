@@ -6,4 +6,3 @@ node_modules/
 next-env.d.ts
 .DS_Store
 .playwright-mcp/
-data/guest-list.txt

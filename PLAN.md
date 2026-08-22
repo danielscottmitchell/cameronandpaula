@@ -30,29 +30,12 @@ a Next.js rewrite pointing `/` at it. Next owns `/rsvp` and `/api` only.
 
 ## Things that will bite whoever touches this next
 
-- **Guest ids are positional.** `H-001` is the first block in
-  `data/guest-list.txt`. Reordering that file reassigns ids and orphans
-  replies. Append new households at the end.
-
-- **Do not re-run `scripts/import-guests.mjs` against the live base.** Nine
-  guests now have aliases edited by hand in Airtable that the script does not
-  know about (Lucas goes by Loon, Gabrielle by Gaby, Patrick by Stella, and so
-  on). The script would overwrite all of them with its own guesses. Add people
-  straight to Airtable instead, continuing the id sequence.
-
-- **`data/guest-list.txt` has diverged from Airtable and cannot be used to
-  add anyone.** Ids are sequential across the whole file, so the file would
-  now hand out G-154 to G-159, which Airtable has already given to the Rivera
-  children, the Doolittles and Axel. Appending to the file used to be safe;
-  it is not any more. Everyone added from 2026-08-11 onward exists only in
-  Airtable, and their household notes say so.
-
-  The file is still worth keeping. Left untouched it regenerates the original
-  ids correctly if it is ever needed as a rebuild source; edited, it stops
-  being able to do even that.
-
-- **`data/guest-list.txt` is gitignored.** It holds home addresses. It lives
-  locally and in Airtable, never in git history.
+- **Airtable is the only source of guest data.** The original text list and
+  its import script were deleted on 2026-08-11, once everything in them lived
+  in Airtable: addresses in household `notes`, and the four status flags
+  (Morano no, Isgur no, Leoni maybe, Ahmed husband) alongside them. Add people
+  straight to Airtable, continuing the id sequence. Ids are `H-0nn` / `G-0nn`
+  and only ever go up; never reuse one, because responses key off `guest_id`.
 
 - **Never submit test data against a real household id.** Seed first
   (`npm run seed`), test against `H-T*`, then purge. Overwriting a real reply
