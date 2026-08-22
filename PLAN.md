@@ -40,10 +40,16 @@ a Next.js rewrite pointing `/` at it. Next owns `/rsvp` and `/api` only.
   on). The script would overwrite all of them with its own guesses. Add people
   straight to Airtable instead, continuing the id sequence.
 
-- **Adding a guest to an existing household cannot go through the text file
-  either.** Guest ids are sequential across the whole file, so inserting a
-  person mid-file renumbers everyone after them. Appending a whole new
-  household at the end is the only safe edit.
+- **`data/guest-list.txt` has diverged from Airtable and cannot be used to
+  add anyone.** Ids are sequential across the whole file, so the file would
+  now hand out G-154 to G-159, which Airtable has already given to the Rivera
+  children, the Doolittles and Axel. Appending to the file used to be safe;
+  it is not any more. Everyone added from 2026-08-11 onward exists only in
+  Airtable, and their household notes say so.
+
+  The file is still worth keeping. Left untouched it regenerates the original
+  ids correctly if it is ever needed as a rebuild source; edited, it stops
+  being able to do even that.
 
 - **`data/guest-list.txt` is gitignored.** It holds home addresses. It lives
   locally and in Airtable, never in git history.
