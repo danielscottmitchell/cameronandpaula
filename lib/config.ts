@@ -46,5 +46,3 @@ export function isInvited(
 }
 
 export const PAULA_PHONE = '(571) 268-3859';
-export const CAMERON_PHONE = '(703) 434-9467';
-export const COUPLE_EMAIL = 'cpbrennans23@gmail.com';

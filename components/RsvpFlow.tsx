@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { CAMERON_PHONE, COUPLE_EMAIL, EVENTS, PAULA_PHONE, isInvited, type EventKey } from '@/lib/config';
+import { EVENTS, PAULA_PHONE, isInvited, type EventKey } from '@/lib/config';
 import { formatPhone, normalizePhone } from '@/lib/normalize';
 
 type Match = { guest_id: string; household_id: string; display_name: string; household_name: string };
@@ -572,9 +572,9 @@ function Confirmation({
       <p className="confirm-line" style={{ marginTop: 12 }}>
         {data.pastDeadline ? (
           <>
-            Replies closed on September 1, so this one is now final on the site. If
-            anything needs changing, text Paula at {PAULA_PHONE}, text Cameron at{' '}
-            {CAMERON_PHONE}, or email <a href={`mailto:${COUPLE_EMAIL}`}>{COUPLE_EMAIL}</a>.
+            Our reply deadline has passed and our vendors have final headcounts, so
+            this is now final. If you have a question, please{' '}
+            <a href="/#contact">get in touch</a>.
           </>
         ) : (
           <>
@@ -622,10 +622,9 @@ function ReadOnly({
       {dietary && <p className="confirm-line">Dietary: {dietary}</p>}
       {song && <p className="confirm-line">Song: {song}</p>}
       <p className="confirm-line" style={{ marginTop: 12 }}>
-        You can still change this, just not through the form. Get in touch with
-        Cameron and Paula and they will sort it out: text Paula at {PAULA_PHONE},
-        text Cameron at {CAMERON_PHONE}, or email{' '}
-        <a href={`mailto:${COUPLE_EMAIL}`}>{COUPLE_EMAIL}</a>.
+        Our reply deadline has passed and our vendors have final headcounts, so
+        we are not able to make changes now. If you have a question, please{' '}
+        <a href="/#contact">get in touch</a>.
       </p>
       <p className="confirm-line">
         <button type="button" className="text-link" onClick={onBack}>
