@@ -573,8 +573,9 @@ function Confirmation({
         {data.pastDeadline ? (
           <>
             Our reply deadline has passed and our vendors have final headcounts, so
-            this is now final. If you have a question, please{' '}
-            <a href="/#contact">get in touch</a>.
+            this is now final.
+            <br />
+            Questions? <a className="text-link" href="/#contact">Contact Cameron and Paula</a>
           </>
         ) : (
           <>
@@ -621,10 +622,12 @@ function ReadOnly({
       {phone && <p className="confirm-line">Phone: {phone}</p>}
       {dietary && <p className="confirm-line">Dietary: {dietary}</p>}
       {song && <p className="confirm-line">Song: {song}</p>}
-      <p className="confirm-line" style={{ marginTop: 12 }}>
-        Our reply deadline has passed and our vendors have final headcounts, so
-        we are not able to make changes now. If you have a question, please{' '}
-        <a href="/#contact">get in touch</a>.
+      <p className="confirm-line" style={{ marginTop: 16 }}>
+        Our reply deadline has passed and our vendors have final headcounts, so we
+        are not able to make changes now.
+      </p>
+      <p className="confirm-line" style={{ marginTop: 4 }}>
+        Questions? <a className="text-link" href="/#contact">Contact Cameron and Paula</a>
       </p>
       <p className="confirm-line">
         <button type="button" className="text-link" onClick={onBack}>

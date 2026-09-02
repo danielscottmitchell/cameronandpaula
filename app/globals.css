@@ -35,6 +35,18 @@ body {
 
 :focus-visible { outline: 2px solid var(--dusty); outline-offset: 3px; border-radius: 2px; }
 
+/* No bare anchor should ever render in browser blue. The RSVP page had one in
+   the closed message and it was the hardest thing on the card to read. */
+.rsvp-section a,
+.confirm-card a {
+  color: var(--dusty);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rsvp-section a:hover,
+.confirm-card a:hover { color: var(--rose); }
+
+
 /* ── Header ── */
 .site-header {
   position: fixed;

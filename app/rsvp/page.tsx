@@ -14,7 +14,7 @@ export default function RsvpPage() {
           will not un-pass, and making this page dynamic to say so would cost
           the static cache on the page every late guest lands on. */}
       <p className="rsvp-sub">
-        Our reply deadline has passed. If we have not heard from you, please reply
+        Our reply deadline has passed. If we have not heard from you, please RSVP
         as soon as you can. One reply covers your whole household.
       </p>
       <RsvpFlow />
