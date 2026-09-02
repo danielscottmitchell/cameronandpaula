@@ -38,10 +38,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'rate_limited' }, { status: 429 });
   }
 
-  if (isPastDeadline()) {
-    return NextResponse.json({ error: 'closed' }, { status: 403 });
-  }
-
   const raw = await req.text();
 
   let body: z.infer<typeof Payload>;
@@ -60,6 +56,15 @@ export async function POST(req: Request) {
 
   const found = await getHousehold(body.household_id);
   if (!found) return NextResponse.json({ error: 'not_found' }, { status: 404 });
+
+  // Past the deadline the form stays open to anyone who never replied, and
+  // closes to anyone who did. Changing an existing answer now goes through
+  // Cameron and Paula, so the numbers they hand the caterer cannot move
+  // underneath them without their knowing.
+  const prior = await getExisting(body.household_id);
+  if (isPastDeadline() && prior.submission) {
+    return NextResponse.json({ error: 'closed' }, { status: 403 });
+  }
 
   // A payload may only answer for guests in its own household, and only for
   // events that household was invited to.
@@ -110,7 +115,6 @@ export async function POST(req: Request) {
     }));
     await upsertResponses(rows);
 
-    const prior = await getExisting(body.household_id);
     await upsertSubmission({
       household_id: body.household_id,
       phone,

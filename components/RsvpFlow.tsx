@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { EVENTS, PAULA_PHONE, isInvited, type EventKey } from '@/lib/config';
+import { CAMERON_PHONE, COUPLE_EMAIL, EVENTS, PAULA_PHONE, isInvited, type EventKey } from '@/lib/config';
 import { formatPhone, normalizePhone } from '@/lib/normalize';
 
 type Match = { guest_id: string; household_id: string; display_name: string; household_name: string };
@@ -24,7 +24,7 @@ type Loaded = {
   song: string;
   message: string;
   firstSubmittedAt: string | null;
-  closed: boolean;
+  pastDeadline: boolean;
   noPhone?: boolean;
 };
 
@@ -134,7 +134,7 @@ function Lookup({ onLoaded }: { onLoaded: (l: Loaded) => void }) {
           song: d.submission?.song_request ?? '',
           message: d.submission?.message ?? '',
           firstSubmittedAt: d.submission?.first_submitted_at ?? null,
-          closed: !!d.closed,
+          pastDeadline: !!d.pastDeadline,
         };
 
         // A draft from an interrupted session wins over what the server has,
@@ -254,7 +254,12 @@ function Form({
   const [error, setError] = useState<string | null>(null);
   const errorRef = useRef<HTMLDivElement>(null);
 
-  const { household, guests, closed } = data;
+  const { household, guests } = data;
+  // Read-only only for households that already replied. Anyone who never did
+  // can still submit; the deadline closed edits, not first replies.
+  const alreadyReplied = data.firstSubmittedAt !== null;
+  const closed = data.pastDeadline && alreadyReplied;
+  const lateButOpen = data.pastDeadline && !alreadyReplied;
   const events = useMemo(() => EVENTS.filter((e) => isInvited(household, e.key)), [household]);
   const single = guests.length === 1;
   const submittedOn = monthDay(data.firstSubmittedAt);
@@ -565,10 +570,20 @@ function Confirmation({
       {data.dietary && <p className="confirm-line">Dietary: {data.dietary}</p>}
       {data.song && <p className="confirm-line">Song: {data.song}</p>}
       <p className="confirm-line" style={{ marginTop: 12 }}>
-        You can come back and change this until September 1, 2026.{' '}
-        <button type="button" className="text-link" onClick={onEdit}>
-          Change our reply
-        </button>
+        {data.pastDeadline ? (
+          <>
+            Replies closed on September 1, so this one is now final on the site. If
+            anything needs changing, text Paula at {PAULA_PHONE}, text Cameron at{' '}
+            {CAMERON_PHONE}, or email <a href={`mailto:${COUPLE_EMAIL}`}>{COUPLE_EMAIL}</a>.
+          </>
+        ) : (
+          <>
+            You can come back and change this until September 1, 2026.{' '}
+            <button type="button" className="text-link" onClick={onEdit}>
+              Change our reply
+            </button>
+          </>
+        )}
       </p>
     </div>
   );
@@ -595,7 +610,9 @@ function ReadOnly({
   return (
     <div className="confirm-card">
       <h3>{data.household.display_name}</h3>
-      <p className="confirm-line">Replies closed on September 1, 2026. Here is what we have.</p>
+      <p className="confirm-line">
+        Replies closed on September 1, 2026. Here is what we have for you.
+      </p>
       {summaryLines(data.guests, answers, data.household).map((l) => (
         <p className="confirm-line" key={l.name}>
           <strong>{l.name}</strong> · {l.text}
@@ -605,7 +622,12 @@ function ReadOnly({
       {dietary && <p className="confirm-line">Dietary: {dietary}</p>}
       {song && <p className="confirm-line">Song: {song}</p>}
       <p className="confirm-line" style={{ marginTop: 12 }}>
-        If anything needs changing, text Paula at {PAULA_PHONE}.{' '}
+        You can still change this, just not through the form. Get in touch with
+        Cameron and Paula and they will sort it out: text Paula at {PAULA_PHONE},
+        text Cameron at {CAMERON_PHONE}, or email{' '}
+        <a href={`mailto:${COUPLE_EMAIL}`}>{COUPLE_EMAIL}</a>.
+      </p>
+      <p className="confirm-line">
         <button type="button" className="text-link" onClick={onBack}>
           Look up a different name
         </button>

@@ -20,7 +20,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
       guests: found.guests,
       responses: existing.responses,
       submission: existing.submission,
-      closed: isPastDeadline(),
+      pastDeadline: isPastDeadline(),
     });
   } catch (err) {
     console.error('household load failed', err);
